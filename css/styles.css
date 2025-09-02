@@ -466,6 +466,7 @@ button, select {
 
 button, [type="button"], [type="reset"], [type="submit"] {
     -webkit-appearance: button;
+    appearance: button;
 }
 
 /* Remove the inner border and padding in Firefox. */
@@ -542,6 +543,7 @@ textarea {
 
 [type="search"] {
     -webkit-appearance: textfield;
+    appearance: textfield;
     /* 1 */
     outline-offset: -2px;
     /* 2 */
@@ -4407,18 +4409,19 @@ input[type="button"].btn--primary:focus {
  * ------------------------------------------------------------------- */
 .s-contact {
     background-color: var(--color-gray-18);
-    padding-top: calc(6 * var(--space));
+    padding-top: calc(4 * var(--space));
     padding-bottom: var(--vspace-3_5);
 }
 
 .s-contact .section-header-allcaps {
     color: white;
-    margin-bottom: var(--vspace-2_5);
+    margin-bottom: var(--vspace-1);
+    margin-top: -5rem;
 }
 
 .s-contact .huge-text {
     color: white;
-    margin-top: 0;
+    margin-top: -2rem;
     font-weight: 400;
     font-size: 4.6rem;
     line-height: 1.304;
@@ -5009,3 +5012,122 @@ input[type="button"].btn--primary:focus {
 /* ===================================================================
  * End Portfolio Styles
  * ================================================================== */
+
+/* ===================================================================
+ * Contact Form Styles
+ * ================================================================== */
+
+.contact-form {
+    margin-top: 1rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 2rem;
+}
+
+.contact-form label {
+    display: block;
+    font-family: var(--font-1);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-1);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: 2px solid var(--color-2-light);
+    border-radius: 8px;
+    font-family: var(--font-2);
+    font-size: 1.6rem;
+    color: var(--color-2-dark);
+    background: white;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-1);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--color-2-dark);
+    opacity: 0.8;
+}
+
+.contact-form input::-webkit-input-placeholder,
+.contact-form textarea::-webkit-input-placeholder {
+    color: var(--color-2-dark);
+    opacity: 0.8;
+}
+
+.contact-form input::-moz-placeholder,
+.contact-form textarea::-moz-placeholder {
+    color: var(--color-2-dark);
+    opacity: 0.8;
+}
+
+.contact-form input:-ms-input-placeholder,
+.contact-form textarea:-ms-input-placeholder {
+    color: var(--color-2-dark);
+    opacity: 0.8;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    background: var(--color-1);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form button:hover {
+    background: var(--color-1-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.contact-form button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Contact Form */
+@media only screen and (max-width: 768px) {
+    .contact-form {
+        margin-top: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+
+    .contact-form button {
+        width: 100%;
+        padding: 1.2rem 2rem;
+        font-size: 1.4rem;
+    }
+}

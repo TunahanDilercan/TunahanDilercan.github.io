@@ -9,18 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- mobile s                        <div class="item-wrap                        <div class="item-wrap">
-                            <h4 class="folio-title">AI/ML Research
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
-                            </h4>                            <h4 class="folio-title">Data Science Project
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
-                            </h4>fic                            <div class="item-wrap">
-                            <h4 class="folio-title">Mobile App Development
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
-                            </h4>                 <div class="item-wrap">
-                            <h4 class="folio-title">Web Development Project
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
-                            </h4>s
+    <!-- mobile specific
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -105,7 +94,7 @@
         <div class="s-hero__scroll">
             <a href="#about" class="s-hero__scroll-link smoothscroll">
                 <span class="scroll-arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M18.707 12.707L17.293 11.293 13 15.586 13 6 11 6 11 15.586 6.707 11.293 5.293 12.707 12 19.414z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1)"><path d="M18.707 12.707L17.293 11.293 13 15.586 13 6 11 6 11 15.586 6.707 11.293 5.293 12.707 12 19.414z"></path></svg>
                 </span>
                 <span class="scroll-text">Scroll Down</span>
             </a>
@@ -143,7 +132,7 @@
                     </div>
                     <div class="column w-1000-stack">
                         <a href="#0" class="btn btn--download">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M12 16L16 11 13 11 13 4 11 4 11 11 8 11z"></path><path d="M20,18H4v-7H2v7c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2v-7h-2V18z"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1)"><path d="M12 16L16 11 13 11 13 4 11 4 11 11 8 11z"></path><path d="M20,18H4v-7H2v7c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2v-7h-2V18z"></path></svg>
                             Download CV
                         </a>
                     </div>
@@ -477,39 +466,49 @@
 
             <div class="column large-7 medium-12">
 
-                <h4 class="huge-text">
-                Have a new project in mind? Let's collaborate and build something awesome. 
-                Let's turn that idea to an even greater product :)
-                </h4>
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <form id="contactForm" action="mailto:tunahandilercan@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Project Title or Subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="body" placeholder="Tell me about your project..." rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                    </form>
+                </div>
 
             </div>
 
             <div class="column large-4 medium-12">
 
                 <div class="row contact-infos">
-                    <div class="column large-12 medium-6 tab-12">
+                    <div class="column large-12">
                         <div class="contact-block">
                             <h5 class="contact-block__header">
                                 Email
                             </h5>
                             <p class="contact-block__content">
-                                <a class="mailtoui" href="mailto:sayhello@ceevee.com">sayhello@ceevee.com</a>
-                            </p>
-                        </div> <!-- end contact-block -->
-                    </div>
-                    <div class="column large-12 medium-6 tab-12">
-                        <div class="contact-block">
-                            <h5 class="contact-block__header">
-                                Phone
-                            </h5>
-                            <p class="contact-block__content">
-                                <a href="tel:+1975432345">+197 543 2345</a>
+                                <a href="mailto:tunahandilercan@gmail.com">tunahandilercan@gmail.com</a>
                             </p>
                         </div> <!-- end contact-block -->
                     </div>
 
                     <div class="column large-12">
-                        <a href="mailto:sayhello@ceevee.com" class="mailtoui btn btn--primary h-full-width">Let's Talk</a>
+                        <div class="contact-block">
+                            <h5 class="contact-block__header">
+                                Quick Contact
+                            </h5>
+                            <p class="contact-block__content">
+                                Fill out the form or send me an email directly.<br>
+                                I'll get back to you within 24 hours!
+                            </p>
+                        </div> <!-- end contact-block -->
                     </div>
                 </div> <!-- end contact-infos -->
 
@@ -578,6 +577,43 @@
                 if (hiddenItems.length > 0) {
                     this.style.display = 'none';
                 }
+            });
+        }
+    });
+    
+    // Contact Form Handler
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                if (subject.trim() === '' || message.trim() === '') {
+                    alert('Please fill in both Subject and Message fields.');
+                    return;
+                }
+                
+                // Create mailto link
+                const mailtoLink = `mailto:tunahandilercan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+                
+                // Create a temporary link element and click it
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                // Show success message
+                alert('Opening your email client...\nIf it doesn\'t open automatically, please copy this email:\ntunahandilercan@gmail.com');
+                
+                // Clear form
+                document.getElementById('subject').value = '';
+                document.getElementById('message').value = '';
             });
         }
     });

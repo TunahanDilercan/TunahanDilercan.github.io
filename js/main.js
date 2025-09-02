@@ -253,21 +253,30 @@
 
         folioLinks.forEach(function(link) {
             let modalbox = link.getAttribute('href');
-            let instance = basicLightbox.create(
-                document.querySelector(modalbox),
-                {
-                    onShow: function(instance) {
-                        //detect Escape key press
-                        document.addEventListener("keydown", function(evt) {
-                            evt = evt || window.event;
-                            if(evt.keyCode === 27){
-                            instance.close();
-                            }
-                        });
+            
+            // Skip if href is an external URL (starts with http)
+            if (modalbox && modalbox.startsWith('http')) {
+                return;
+            }
+            
+            // Only create modal for internal selectors (starting with #)
+            if (modalbox && modalbox.startsWith('#')) {
+                let instance = basicLightbox.create(
+                    document.querySelector(modalbox),
+                    {
+                        onShow: function(instance) {
+                            //detect Escape key press
+                            document.addEventListener("keydown", function(evt) {
+                                evt = evt || window.event;
+                                if(evt.keyCode === 27){
+                                instance.close();
+                                }
+                            });
+                        }
                     }
-                }
-            )
-            modals.push(instance);
+                )
+                modals.push(instance);
+            }
         });
 
         folioLinks.forEach(function(link, index) {
