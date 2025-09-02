@@ -1,0 +1,79 @@
+/* Security CSS - Add to styles.css */
+
+/* Disable text selection only for sensitive areas */
+.no-select,
+.s-header,
+.s-footer,
+nav,
+.folio-item,
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Allow text selection for content areas */
+.s-hero,
+.s-about,
+.s-resume,
+.s-services,
+.s-contact,
+.thank-you-content,
+input[type="text"],
+input[type="email"],
+textarea,
+p,
+h1, h2, h3, h4, h5, h6,
+.selectable-text,
+.about-desc,
+.resume-block,
+.service-desc {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Disable image dragging */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none;
+}
+
+/* Make images unselectable */
+img::selection {
+    background: transparent;
+}
+
+/* Hide elements when developer tools are detected */
+@media screen and (max-width: 1px) {
+    body {
+        display: none;
+    }
+}
+
+/* Blur content when window is not focused (limited effectiveness) */
+.blur-on-unfocus {
+    transition: filter 0.3s ease;
+}
+
+.blur-on-unfocus.blurred {
+    filter: blur(5px);
+    pointer-events: none;
+}
+
+/* Hide scroll bars to make copying harder */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* WebKit */
+}

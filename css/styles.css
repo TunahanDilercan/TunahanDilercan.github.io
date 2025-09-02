@@ -5040,11 +5040,11 @@ input[type="button"].btn--primary:focus {
 .contact-form textarea {
     width: 100%;
     padding: 1.2rem 1.5rem;
-    border: 2px solid var(--color-2-light);
+    border: 2px solid var(--color-1-light);
     border-radius: 8px;
     font-family: var(--font-2);
     font-size: 1.6rem;
-    color: var(--color-2-dark);
+    color: var(--color-text-dark);
     background: white;
     transition: all 0.3s ease;
     box-sizing: border-box;
@@ -5054,31 +5054,31 @@ input[type="button"].btn--primary:focus {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--color-1);
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    box-shadow: 0 0 0 3px hsla(182, 82%, 38%, 0.15);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: var(--color-2-dark);
-    opacity: 0.8;
+    color: var(--color-placeholder);
+    opacity: 0.7;
 }
 
 .contact-form input::-webkit-input-placeholder,
 .contact-form textarea::-webkit-input-placeholder {
-    color: var(--color-2-dark);
-    opacity: 0.8;
+    color: var(--color-placeholder);
+    opacity: 0.7;
 }
 
 .contact-form input::-moz-placeholder,
 .contact-form textarea::-moz-placeholder {
-    color: var(--color-2-dark);
-    opacity: 0.8;
+    color: var(--color-placeholder);
+    opacity: 0.7;
 }
 
 .contact-form input:-ms-input-placeholder,
 .contact-form textarea:-ms-input-placeholder {
-    color: var(--color-2-dark);
-    opacity: 0.8;
+    color: var(--color-placeholder);
+    opacity: 0.7;
 }
 
 .contact-form textarea {
@@ -5129,5 +5129,259 @@ input[type="button"].btn--primary:focus {
         width: 100%;
         padding: 1.2rem 2rem;
         font-size: 1.4rem;
+    }
+}
+
+/* Custom secondary button styles */
+.btn--secondary, 
+button.btn--secondary {
+    background: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+.btn--secondary:hover, 
+button.btn--secondary:hover,
+.btn--secondary:focus, 
+button.btn--secondary:focus {
+    background: #5a6268 !important;
+    border-color: #5a6268 !important;
+    color: #ffffff !important;
+}
+
+/* ===================================================================
+ * # Legal Menu (Discrete)
+ * ------------------------------------------------------------------- */
+
+.legal-menu {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    font-family: "poppins-regular", sans-serif;
+}
+
+.legal-menu__toggle {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10001;
+}
+
+.legal-menu__toggle:hover {
+    transform: scale(1.1);
+}
+
+.legal-menu__toggle:active {
+    transform: scale(0.95);
+}
+
+.legal-menu__toggle i {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.legal-menu__toggle:hover i {
+    color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.legal-menu__dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    min-width: 170px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10000;
+}
+
+.legal-menu__dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.legal-menu__dropdown a {
+    display: block;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-menu__dropdown a:last-child {
+    border-bottom: none;
+}
+
+.legal-menu__dropdown a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 1);
+    padding-left: 20px;
+}
+
+/* Mobile responsiveness for legal menu */
+@media screen and (max-width: 600px) {
+    .legal-menu {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .legal-menu__toggle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .legal-menu__toggle i {
+        font-size: 16px;
+    }
+    
+    .legal-menu__dropdown {
+        min-width: 150px;
+        right: -5px;
+        top: 42px;
+    }
+    
+    .legal-menu__dropdown a {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
+/* ===================================================================
+ * # Legal Pages Styling - Ultra Simple & Clean
+ * ------------------------------------------------------------------- */
+
+.legal-page {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 2rem 1rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.s-legal {
+    padding: 2rem 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legal-content {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0;
+    line-height: 1.7;
+}
+
+.legal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.legal-header h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    letter-spacing: -0.5px;
+}
+
+.legal-date {
+    color: #888888;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+
+.legal-body {
+    line-height: 1.8;
+    color: #dddddd;
+    font-size: 1.7rem;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.legal-body h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin: 3rem 0 1.2rem 0;
+    font-weight: 500;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    letter-spacing: -0.3px;
+}
+
+.legal-body p {
+    margin-bottom: 1.4rem;
+    text-align: justify;
+}
+
+.legal-body a {
+    color: #39b982;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.legal-body a:hover {
+    color: #2a9068;
+    border-bottom-color: #2a9068;
+}
+
+.legal-body strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Mobile responsiveness for legal pages */
+@media screen and (max-width: 768px) {
+    .legal-page {
+        padding: 1rem 0.5rem;
+    }
+    
+    .s-legal {
+        padding: 1rem 0;
+    }
+    
+    .legal-content {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .legal-header h1 {
+        font-size: 2.4rem;
+    }
+    
+    .legal-body {
+        font-size: 1.5rem;
+        line-height: 1.7;
+    }
+    
+    .legal-body h2 {
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1rem 0;
+    }
+    
+    .legal-body p {
+        text-align: left;
     }
 }

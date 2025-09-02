@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Block access to sensitive directories
+Disallow: /js/
+Disallow: /css/
+Disallow: /.git/
+Disallow: /backup/
+Disallow: /temp/
+Disallow: /logs/
+
+# Security related
+Disallow: /*?*
+Disallow: /*.php$
+Disallow: /*.inc$
+Disallow: /*.conf$
+Disallow: /*.log$
+
+# Sitemap
+Sitemap: https://tunahandilercan.github.io/sitemap.xml

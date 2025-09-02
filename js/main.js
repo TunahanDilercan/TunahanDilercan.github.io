@@ -391,3 +391,43 @@
     })();
 
 })(document.documentElement);
+
+/* Legal Menu Toggle Function
+ * -------------------------------------------------- */
+function toggleLegalMenu() {
+    console.log('Legal menu toggle clicked!');
+    const dropdown = document.getElementById('legalDropdown');
+    
+    if (dropdown) {
+        const isVisible = dropdown.classList.contains('show');
+        
+        if (isVisible) {
+            dropdown.classList.remove('show');
+            console.log('Menu closed');
+        } else {
+            dropdown.classList.add('show');
+            console.log('Menu opened');
+        }
+    } else {
+        console.error('Dropdown element not found!');
+    }
+}
+
+// Close the dropdown if clicked outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('legalDropdown');
+    const toggle = document.querySelector('.legal-menu__toggle');
+    
+    if (dropdown && toggle) {
+        // If click is outside both toggle and dropdown
+        if (!toggle.contains(event.target) && !dropdown.contains(event.target)) {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                console.log('Menu closed by outside click');
+            }
+        }
+    }
+});
+
+// Ensure function is available globally
+window.toggleLegalMenu = toggleLegalMenu;

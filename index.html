@@ -5,9 +5,16 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Tunahan Dilercan</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Tunahan Dilercan - Software Engineer & Developer</title>
+    <meta name="description" content="Tunahan Dilercan - Experienced Software Engineer specializing in full-stack development, mechatronics, and innovative technology solutions.">
+    <meta name="author" content="Tunahan Dilercan">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://formsubmit.co; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co; frame-ancestors 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
     <!-- mobile specific
     ================================================== -->
@@ -17,6 +24,7 @@
     ================================================== -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/security.css">
 
     <!-- script
     ================================================== -->
@@ -42,6 +50,27 @@
         <div id="loader"></div>
     </div>
 
+
+    <!-- Legal Menu (Discrete)
+    ================================================== -->
+    <div class="legal-menu">
+        <div class="legal-menu__toggle" onclick="
+            var dropdown = document.getElementById('legalDropdown');
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            } else {
+                dropdown.classList.add('show');
+            }
+        ">
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="legal-menu__dropdown" id="legalDropdown">
+            <a href="contact-us">Contact Us</a>
+            <a href="privacy-policy">Privacy Policy</a>
+            <a href="terms-of-service">Terms of Service</a>
+            <a href="cookie-policy">Cookie Policy</a>
+        </div>
+    </div>
 
     <!-- header
     ================================================== -->
@@ -304,7 +333,7 @@
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
                             <h4 class="folio-title">Mechatronics Project
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Engineering Project
@@ -318,7 +347,7 @@
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
                             <h4 class="folio-title">Web Development
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Full Stack Development
@@ -332,7 +361,7 @@
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
                             <h4 class="folio-title">Management Information System
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Database & System Design
@@ -346,7 +375,7 @@
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
                             <h4 class="folio-title">IoT Solutions
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Internet of Things
@@ -360,7 +389,7 @@
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
                             <h4 class="folio-title">Mobile Applications
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Mobile Development
@@ -374,7 +403,7 @@
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
                             <h4 class="folio-title">Data Analysis
-                                <a href="https://github.com/tunahandilercan" target="_blank"><i class="fa fa-cloud"></i></a>
+                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fa fa-cloud"></i></a>
                             </h4>
                             <span class="folio-types">
                                 Data Science & Analytics
@@ -456,6 +485,8 @@
     ================================================== -->
     <section id="contact" class="s-contact target-section">
 
+        <div style="margin-bottom: 80px;"></div>
+
         <div class="row s-contact__header">
             <div class="column large-12">
                 <h3 class="section-header-allcaps">Say Hello</h3>
@@ -468,7 +499,17 @@
 
                 <!-- Contact Form -->
                 <div class="contact-form">
-                    <form id="contactForm" action="mailto:tunahandilercan@gmail.com" method="post" enctype="text/plain">
+                    <form id="contactForm" action="https://formsubmit.co/tunahandilercan@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="New message from portfolio site">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://tunahandilercan.github.io/thank-you.html">
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="_replyto" placeholder="you@example.com" required>
+                        </div>
+
                         <div class="form-group">
                             <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" placeholder="Project Title or Subject" required>
@@ -476,10 +517,16 @@
 
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="body" placeholder="Tell me about your project..." rows="5" required></textarea>
+                            <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn--primary">Send Message</button>
+                        <!-- Honeypot -->
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <button type="submit" class="btn btn--primary">Send Message</button>
+                            <button type="button" id="mailtoBtn" class="btn btn--secondary">Send via Email App</button>
+                        </div>
                     </form>
                 </div>
 
@@ -581,41 +628,24 @@
         }
     });
     
-    // Contact Form Handler
+    // Optional: Mailto button opens user's email app with filled content
     document.addEventListener('DOMContentLoaded', function() {
-        const contactForm = document.getElementById('contactForm');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                if (subject.trim() === '' || message.trim() === '') {
-                    alert('Please fill in both Subject and Message fields.');
-                    return;
-                }
-                
-                // Create mailto link
-                const mailtoLink = `mailto:tunahandilercan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-                
-                // Create a temporary link element and click it
-                const tempLink = document.createElement('a');
-                tempLink.href = mailtoLink;
-                tempLink.style.display = 'none';
-                document.body.appendChild(tempLink);
-                tempLink.click();
-                document.body.removeChild(tempLink);
-                
-                // Show success message
-                alert('Opening your email client...\nIf it doesn\'t open automatically, please copy this email:\ntunahandilercan@gmail.com');
-                
-                // Clear form
-                document.getElementById('subject').value = '';
-                document.getElementById('message').value = '';
-            });
-        }
+        const mailtoBtn = document.getElementById('mailtoBtn');
+        if (!mailtoBtn) return;
+        mailtoBtn.addEventListener('click', function() {
+            const subject = (document.getElementById('subject')?.value || '').trim();
+            const message = (document.getElementById('message')?.value || '').trim();
+            const userEmail = (document.getElementById('email')?.value || '').trim();
+            
+            // Create full message body with user email info at the end
+            let fullBody = message;
+            if (userEmail) {
+                fullBody += `\n\n---\nSent by: ${userEmail}`;
+            }
+            
+            const link = `mailto:tunahandilercan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullBody)}`;
+            window.location.href = link;
+        });
     });
     </script>
 
