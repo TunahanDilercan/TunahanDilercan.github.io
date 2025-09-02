@@ -3250,6 +3250,13 @@ input[type="button"].btn--primary:focus {
     color: var(--color-1) !important;
 }
 
+/* Portfolio link specific behavior */
+.s-header__nav a[href="#portfolio"]:hover,
+.s-header__nav a[href="#portfolio"]:focus,
+.s-header__nav li.current a[href="#portfolio"] {
+    color: var(--color-1) !important;
+}
+
 /* ------------------------------------------------------------------- 
  * ## mobile menu toggle 
  * ------------------------------------------------------------------- */
@@ -4739,7 +4746,7 @@ input[type="button"].btn--primary:focus {
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid white;
-    animation: typing 1.5s steps(11, end) 1s, blink-caret 0.5s step-end infinite 1s;
+    animation: typing 1.5s steps(11, end) 1s, blink-caret 0.5s step-end 2 2.5s;
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
@@ -4763,3 +4770,242 @@ input[type="button"].btn--primary:focus {
     from, to { border-color: transparent; }
     50% { border-color: white; }
 }
+
+/* ===================================================================
+ * Portfolio Styles (inspired by modern design)
+ * ================================================================== */
+
+/* Grid Classes for Portfolio */
+#portfolio .row {
+    width: 94%;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: block;
+}
+
+#portfolio .col-twelve {
+    width: 100%;
+}
+
+#portfolio .bgrid {
+    width: 100%;
+}
+
+#portfolio {
+    background: #ffffff;
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+}
+
+.section-intro {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-intro h5 {
+    font-size: 1.6rem;
+    color: var(--color-1);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.section-intro h1 {
+    font-size: 4rem;
+    color: #151515;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.section-intro .lead {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: #757575;
+    max-width: 80rem;
+    margin: 0 auto 0 auto;
+}
+
+.portfolio-content {
+    position: relative;
+    text-align: center;
+}
+
+#folio-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
+}
+
+#portfolio .folio-item {
+    padding: 0;
+    position: relative;
+    overflow: visible;
+    background-color: #ebebeb;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: auto;
+}
+
+#portfolio .folio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#portfolio .item-wrap {
+    padding: 0;
+    height: auto;
+    display: block;
+}
+
+#portfolio .folio-title {
+    color: black;
+    font-size: 2.6rem;
+    padding: 2.5rem 2rem 0.3rem 2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+#portfolio .folio-title a {
+    color: var(--color-1);
+    font-size: 2.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+#portfolio .folio-title a:hover {
+    color: var(--color-2);
+    transform: scale(1.1);
+}
+
+#portfolio .folio-title a i {
+    font-size: 2.8rem;
+}
+
+#portfolio .folio-types {
+    color: var(--color-1);
+    padding: 0.2rem 2rem 1rem 2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: left;
+    display: block;
+}
+
+#portfolio .project-description {
+    color: #666;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2.5rem;
+    text-align: left;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.show-more-container {
+    margin: 4rem auto 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+
+#showMoreBtn {
+    background: var(--color-1);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#showMoreBtn:hover {
+    background: var(--color-2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1024px) {
+    #folio-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    #portfolio .folio-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #folio-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .section-intro {
+        margin-bottom: 3rem;
+    }
+    
+    .section-intro h1 {
+        font-size: 3rem;
+    }
+    
+    #portfolio {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+    
+    #portfolio .folio-title {
+        font-size: 2rem;
+    }
+    
+    #portfolio .item-wrap {
+        padding: 0;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #portfolio .folio-title {
+        font-size: 1.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    #portfolio .folio-title a {
+        align-self: flex-end;
+    }
+}
+
+/* ===================================================================
+ * End Portfolio Styles
+ * ================================================================== */

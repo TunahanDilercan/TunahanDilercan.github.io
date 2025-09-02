@@ -10,7 +10,57 @@
     html.className = html.className.replace(/\bno-js\b/g, '') + ' js ';
 
 
-   /* Preloader
+   /* Pr    }; // end ssTypewriter
+
+
+   /* Portfolio Show More
+    * -------------------------------------------------- */
+    const ssPortfolioShowMore = function() {
+        
+        console.log('ssPortfolioShowMore function called');
+        
+        const showMoreBtn = document.querySelector('#showMoreBtn');
+        console.log('Button element:', showMoreBtn);
+        
+        if (!showMoreBtn) {
+            console.error('Show More button not found!');
+            return;
+        }
+
+        console.log('Show More button found, adding event listener');
+        
+        showMoreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Show More button clicked!');
+            
+            const hiddenItems = document.querySelectorAll('.folio-item.hidden');
+            console.log('Found hidden items:', hiddenItems.length);
+            
+            if (hiddenItems.length === 0) {
+                console.log('No hidden items found, checking all items:');
+                const allItems = document.querySelectorAll('.folio-item');
+                console.log('Total items:', allItems.length);
+                allItems.forEach((item, index) => {
+                    console.log(`Item ${index}:`, item.className);
+                });
+            }
+            
+            hiddenItems.forEach(function(item, index) {
+                console.log('Showing item', index, item);
+                item.classList.remove('hidden');
+                item.style.display = 'block';
+            });
+            
+            if (hiddenItems.length > 0) {
+                this.style.display = 'none';
+                console.log('Button hidden');
+            }
+        });
+
+    }; // end ssPortfolioShowMore
+
+
+   /* Initializeder
     * -------------------------------------------------- */
     const ssPreloader = function() {
 
@@ -327,6 +377,7 @@
         ssSmoothScroll();
         ssBackToTop();
         ssTypewriter();
+        ssPortfolioShowMore();
 
     })();
 
