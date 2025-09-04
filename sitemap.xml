@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://tunahandilercan.com/</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://tunahandilercan.com/contact-us</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/contact-us.html</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://tunahandilercan.com/privacy-policy</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/privacy-policy.html</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://tunahandilercan.com/terms-of-service</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/terms-of-service.html</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://tunahandilercan.com/cookie-policy</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/cookie-policy.html</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://tunahandilercan.com/thank-you</loc>
-        <lastmod>2025-09-02</lastmod>
+        <loc>https://tunahandilercan.com.tr/thank-you.html</loc>
+        <lastmod>2025-09-04</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>https://tunahandilercan.com.tr/404.html</loc>
+        <lastmod>2025-09-04</lastmod>
         <changefreq>never</changefreq>
         <priority>0.1</priority>
     </url>

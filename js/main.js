@@ -163,6 +163,11 @@
                     toggleButton.classList.toggle('is-clicked');
                     siteBody.classList.toggle('menu-is-open');
                 }
+
+                // Avoid sticky focus color after click
+                if (typeof link.blur === 'function') {
+                    setTimeout(() => link.blur(), 0);
+                }
             });
         });
 
@@ -183,6 +188,7 @@
     const ssScrollSpy = function() {
 
         const sections = document.querySelectorAll(".target-section");
+        const navLinks = document.querySelectorAll(".s-header__nav a");
 
         // Add an event listener listening for scroll
         window.addEventListener("scroll", navHighlight);
@@ -191,26 +197,39 @@
         
             // Get current scroll position
             let scrollY = window.pageYOffset;
-        
-            // Loop through sections to get height(including padding and border), 
-            // top and ID values for each
-            sections.forEach(function(current) {
-                const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 50;
-                const sectionId = current.getAttribute("id");
             
-               /* If our current scroll position enters the space where current section 
-                * on screen is, add .current class to parent element(li) of the thecorresponding 
-                * navigation link, else remove it. To know which link is active, we use 
-                * sectionId variable we are getting while looping through sections as 
-                * an selector
-                */
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    document.querySelector(".s-header__nav a[href*=" + sectionId + "]").parentNode.classList.add("current");
-                } else {
-                    document.querySelector(".s-header__nav a[href*=" + sectionId + "]").parentNode.classList.remove("current");
-                }
+            // Clear all current classes first
+            navLinks.forEach(link => {
+                link.parentNode.classList.remove("current");
             });
+            
+            // Find the current section based on scroll position
+            let currentSection = null;
+            
+            // Special case: if we're at the very top, make Home active
+            if (scrollY < 150) {
+                currentSection = "hero";
+            } else {
+                // Loop through sections to find which one we're currently in
+                sections.forEach(function(section) {
+                    const sectionHeight = section.offsetHeight;
+                    const sectionTop = section.offsetTop - 150; // Offset for better detection
+                    const sectionId = section.getAttribute("id");
+                
+                    // Check if we're in this section
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        currentSection = sectionId;
+                    }
+                });
+            }
+            
+            // If we found a current section, activate its navigation link
+            if (currentSection) {
+                const activeLink = document.querySelector(".s-header__nav a[href*=" + currentSection + "]");
+                if (activeLink) {
+                    activeLink.parentNode.classList.add("current");
+                }
+            }
         }
 
     }; // end ssScrollSpy
@@ -317,15 +336,28 @@
     * ------------------------------------------------------ */
     const ssSmoothScroll = function () {
         
-        const triggers = document.querySelectorAll(".smoothscroll");
+    const triggers = document.querySelectorAll(".smoothscroll");
 
         triggers.forEach(function(trigger) {
-            trigger.addEventListener("click", function() {
+            trigger.addEventListener("click", function(e) {
                 const target = trigger.getAttribute("href");
+                const targetElement = document.querySelector(target);
+                
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Use native smooth scroll for better performance
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                        inline: 'nearest'
+                    });
 
-                Jump(target, {
-                    duration: 1200,
-                });
+                    // Remove focus from clicked link to prevent persistent focus styles
+                    if (typeof trigger.blur === 'function') {
+                        setTimeout(() => trigger.blur(), 0);
+                    }
+                }
             });
         });
 
@@ -371,6 +403,78 @@
     }; // end ssTypewriter
 
 
+   /* Reading Progress Bar
+    * -------------------------------------------------- */
+    const ssReadingProgress = function() {
+        
+        const progressBar = document.getElementById('readingProgress');
+        if (!progressBar) return;
+
+        window.addEventListener('scroll', function() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            
+            // Update progress width
+            progressBar.style.width = Math.min(progress, 100) + '%';
+            
+            // Check if we're past About section
+            const aboutSection = document.querySelector('#about');
+            const resumeSection = document.querySelector('#resume');
+            
+            if (aboutSection && resumeSection) {
+                const aboutBottom = aboutSection.offsetTop + aboutSection.offsetHeight;
+                const resumeTop = resumeSection.offsetTop;
+                
+                // Change color when scrolling past About section
+                if (scrolled > aboutBottom || scrolled > resumeTop - 100) {
+                    progressBar.classList.add('turquoise');
+                } else {
+                    progressBar.classList.remove('turquoise');
+                }
+            }
+        });
+
+    }; // end ssReadingProgress
+
+
+   /* Pull to Refresh
+    * -------------------------------------------------- */
+    const ssPullToRefresh = function() {
+        
+        let startY = 0;
+        let pullDistance = 0;
+        const threshold = 80;
+        
+        document.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].pageY;
+        }, { passive: true });
+        
+        document.addEventListener('touchmove', function(e) {
+            if (window.scrollY === 0) {
+                pullDistance = e.touches[0].pageY - startY;
+                
+                if (pullDistance > threshold) {
+                    document.body.style.transform = `translateY(${Math.min(pullDistance - threshold, 50)}px)`;
+                    document.body.style.opacity = '0.8';
+                }
+            }
+        }, { passive: true });
+        
+        document.addEventListener('touchend', function() {
+            if (pullDistance > threshold && window.scrollY === 0) {
+                window.location.reload();
+            }
+            
+            document.body.style.transform = '';
+            document.body.style.opacity = '';
+            pullDistance = 0;
+        }, { passive: true });
+
+    }; // end ssPullToRefresh
+
+
    /* initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -387,6 +491,8 @@
         ssBackToTop();
         ssTypewriter();
         ssPortfolioShowMore();
+        ssReadingProgress();
+        ssPullToRefresh();
 
     })();
 

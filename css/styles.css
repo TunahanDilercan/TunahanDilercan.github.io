@@ -1,3 +1,21 @@
+/* Google Fonts import - must be at the top */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap");
+
+.folio-title .project-links img.openai-icon {
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.2s, filter 0.2s;
+    filter: invert(54%) sepia(98%) saturate(747%) hue-rotate(120deg) brightness(92%) contrast(101%);
+    /* matches --color-1 (turkuaz) */
+}
+
+.folio-title .project-links a:hover img.openai-icon {
+    transform: scale(1.05);
+    filter: invert(54%) sepia(98%) saturate(747%) hue-rotate(120deg) brightness(120%) contrast(101%);
+}
 /* =================================================================== 
  * Ceevee Main Stylesheet
  * Template Ver. 2.0.0
@@ -83,7 +101,6 @@
 /* ------------------------------------------------------------------- 
  * ## fonts
  * ------------------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap");
 :root {
     --font-1: "Inter", sans-serif;
     --font-2: "IBM Plex Serif", serif;
@@ -1706,62 +1723,76 @@ h6, .h6 {
     color: var(--color-text-dark);
 }
 
-@media screen and (max-width: 400px) {
-    .lead, .attention-getter {
-        font-size: calc(var(--text-size) * 1.0556);
+@media screen and (max-width: 600px) {
+    .legal-menu {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+    }
+    .legal-menu__toggle {
+        width: 40px;
+        height: 40px;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 10001;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    .legal-menu__toggle:hover {
+        background: rgba(255,255,255,0.1) !important;
+        transform: scale(1.05);
+    }
+    .legal-menu__toggle:focus {
+        background: transparent !important;
+        outline: none !important;
+    }
+    .legal-menu__toggle:active {
+        background: rgba(255,255,255,0.05) !important;
+        transform: scale(0.95);
+    }
+    .legal-menu__toggle i {
+        color: rgba(255,255,255,0.9) !important;
+        font-size: 20px !important;
+        background: transparent !important;
+        pointer-events: none;
+    }
+    .legal-menu__dropdown {
+        min-width: 160px;
+        right: 0;
+        top: 48px;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .legal-menu__dropdown a {
+        padding: 14px 16px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .legal-menu__dropdown a:hover {
+        background: rgba(255,255,255,0.1);
+        color: rgba(255,255,255,1);
+        padding-left: 20px;
+    }
+    /* 3 nokta ikonu sabit ve masaüstü gibi görünsün */
+    .legal-menu__toggle i.fas.fa-ellipsis-h {
+        color: rgba(255,255,255,0.9) !important;
+        font-size: 20px !important;
+        background: transparent !important;
+        border-radius: 50%;
+        box-shadow: none !important;
     }
 }
-
-figure img, p img {
-    margin: 0;
-    vertical-align: bottom;
-}
-
-em, i, strong, b {
-    font-size: inherit;
-    line-height: inherit;
-}
-
-em, i {
-    font-family: var(--font-1);
-    font-style: italic;
-}
-
-strong, b {
-    font-family: var(--font-1);
-    font-weight: 600;
-    color: var(--color-text-dark);
-}
-
-small {
-    font-size: var(--text-sm);
-    font-weight: 500;
-    line-height: var(--vspace-0_5);
-}
-
-blockquote {
-    margin: 0 0 var(--vspace-1) 0;
-    padding: var(--vspace-1) var(--vspace-1_5);
-    border-left: 4px solid black;
-    position: relative;
-}
-
-@media screen and (max-width: 400px) {
-    blockquote {
-        padding: var(--vspace-0_75) var(--vspace-0_75);
-    }
-}
-
-blockquote p {
-    font-family: var(--font-2);
-    font-size: var(--text-lg);
-    font-weight: 400;
-    font-style: normal;
-    line-height: var(--vspace-1_25);
-    color: var(--color-text-dark);
-    padding: 0;
-}
-
 blockquote cite {
     display: block;
     font-family: var(--font-1);
@@ -2559,28 +2590,45 @@ input[type="button"].btn--primary:focus {
  * ------------------------------------------------------------------- */
 .skill-bars-fat {
     list-style: none;
-    margin: var(--vspace-2) 0 var(--vspace-1);
+    margin: var(--vspace-1) 0 var(--vspace-0_5);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem 1.5rem;
+}
+
+/* Smooth scrolling for skill interactions */
+html {
+    scroll-behavior: smooth;
 }
 
 .skill-bars-fat li {
     height: 5.2rem;
     background: transparent;
-    margin-bottom: 5.2rem;
+    margin-bottom: 0;
     padding: 0;
     position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skill-bars-fat li:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
 }
 
 .skill-bars-fat li strong {
     font-family: var(--font-1);
     font-weight: 600;
-    color: var(--color-text-dark);
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: .2em;
-    font-size: calc(var(--text-size) * 0.7778);
-    line-height: 2rem;
+    letter-spacing: .15em;
+    font-size: calc(var(--text-size) * 0.7);
+    line-height: 5.2rem;
     position: absolute;
-    top: -3.2rem;
-    left: 0;
+    top: 0;
+    left: 1.5rem;
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .skill-bars-fat li .progress {
@@ -2597,6 +2645,14 @@ input[type="button"].btn--primary:focus {
     display: block;
     height: 100%;
     background-color: var(--color-gray-18);
+    width: 0%;
+    transition: width 1.5s ease-out;
+    border-radius: 3px;
+}
+
+/* Skill bars animation trigger */
+.skill-bars-fat.loaded li .progress.animate::before {
+    width: var(--target-width, 0%);
 }
 
 .skill-bars-fat li .percent5::before {
@@ -2636,23 +2692,30 @@ input[type="button"].btn--primary:focus {
 }
 
 .skill-bars-fat li .percent50::before {
-    width: 50%;
+    width: 0%;
+    animation: fillBar50 2s ease-out 0.5s forwards;
 }
 
-.skill-bars-fat li .percent55::before {
-    width: 55%;
+@keyframes fillBar50 {
+    to { width: 50%; }
 }
 
 .skill-bars-fat li .percent60::before {
-    width: 60%;
+    width: 0%;
+    animation: fillBar60 2s ease-out 0.7s forwards;
 }
 
-.skill-bars-fat li .percent65::before {
-    width: 65%;
+@keyframes fillBar60 {
+    to { width: 60%; }
 }
 
 .skill-bars-fat li .percent70::before {
-    width: 70%;
+    width: 0%;
+    animation: fillBar70 2s ease-out 0.3s forwards;
+}
+
+@keyframes fillBar70 {
+    to { width: 70%; }
 }
 
 .skill-bars-fat li .percent75::before {
@@ -2677,6 +2740,25 @@ input[type="button"].btn--primary:focus {
 
 .skill-bars-fat li .percent100::before {
     width: 100%;
+}
+
+/* Mobile responsiveness for skills grid */
+@media screen and (max-width: 768px) {
+    .skill-bars-fat {
+        grid-template-columns: 1fr;
+        gap: 2rem 0;
+    }
+    
+    .skill-bars-fat li {
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .skill-bars-fat {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 1.5rem;
+    }
 }
 
 /* ------------------------------------------------------------------- 
@@ -3237,7 +3319,7 @@ input[type="button"].btn--primary:focus {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.s-header__nav a:hover, .s-header__nav a:focus {
+.s-header__nav a:hover, .s-header__nav a:focus-visible {
     color: var(--color-2);
 }
 
@@ -3247,15 +3329,22 @@ input[type="button"].btn--primary:focus {
 
 /* Say Hello link specific behavior */
 .s-header__nav a[href="#contact"]:hover,
-.s-header__nav a[href="#contact"]:focus,
+.s-header__nav a[href="#contact"]:focus-visible,
 .s-header__nav li.current a[href="#contact"] {
     color: var(--color-1) !important;
 }
 
 /* Portfolio link specific behavior */
 .s-header__nav a[href="#portfolio"]:hover,
-.s-header__nav a[href="#portfolio"]:focus,
+.s-header__nav a[href="#portfolio"]:focus-visible,
 .s-header__nav li.current a[href="#portfolio"] {
+    color: var(--color-1) !important;
+}
+
+/* Resume link specific behavior */
+.s-header__nav a[href="#resume"]:hover,
+.s-header__nav a[href="#resume"]:focus-visible,
+.s-header__nav li.current a[href="#resume"] {
     color: var(--color-1) !important;
 }
 
@@ -3350,6 +3439,7 @@ input[type="button"].btn--primary:focus {
         padding: 0;
     }
     .s-header__nav-wrap, .s-header__nav {
+        display: none !important;
         background-color: #050505;
     }
     .s-header__nav-wrap {
@@ -3401,7 +3491,7 @@ input[type="button"].btn--primary:focus {
         left: 0;
     }
     .s-header__menu-toggle {
-        display: block;
+        display: none !important;
     }
     .menu-is-open .s-header__nav-wrap {
         height: auto;
@@ -3898,15 +3988,15 @@ input[type="button"].btn--primary:focus {
  *
  * ------------------------------------------------------------------- */
 .s-resume {
-    background-color: white;
+    background-color: #f8f9fa;
     padding-top: calc(6 * var(--space));
-    padding-bottom: var(--vspace-4);
+    padding-bottom: var(--vspace-2);
 }
 
 .s-resume__section {
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--vspace-0_75);
-    margin-bottom: var(--vspace-2_5);
+    padding-bottom: var(--vspace-0_5);
+    margin-bottom: var(--vspace-1_5);
 }
 
 .s-resume__section:last-child {
@@ -3919,7 +4009,7 @@ input[type="button"].btn--primary:focus {
  * ## resume block
  * ------------------------------------------------------------------- */
 .resume-block {
-    margin-bottom: var(--vspace-1_75);
+    margin-bottom: var(--vspace-1);
 }
 
 .resume-block h4 {
@@ -3976,8 +4066,8 @@ input[type="button"].btn--primary:focus {
  *
  * ------------------------------------------------------------------- */
 .s-portfolio {
-    background-color: var(--color-gray-1);
-    padding-top: calc(6 * var(--space));
+    background-color: #e9ecef;
+    padding-top: calc(3 * var(--space));
     padding-bottom: var(--vspace-5);
 }
 
@@ -4893,7 +4983,14 @@ input[type="button"].btn--primary:focus {
 }
 
 #portfolio .folio-title a i {
-    font-size: 2.8rem;
+    font-size: 1.2em;
+    color: var(--color-1);
+    transition: transform 0.2s, color 0.2s;
+}
+
+#portfolio .folio-title a:hover i {
+    color: var(--color-2);
+    transform: scale(1.1);
 }
 
 #portfolio .folio-types {
@@ -5150,11 +5247,248 @@ button.btn--secondary:focus {
 }
 
 /* ===================================================================
+ * # Modern UI Enhancements
+ * ------------------------------------------------------------------- */
+
+/* Pull to Refresh */
+body {
+    overscroll-behavior-y: contain;
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-2-light), var(--color-2));
+    z-index: 10000;
+    transition: width 0.1s ease, background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.reading-progress.turquoise {
+    background: linear-gradient(90deg, #17a2b8, #20c997);
+}
+
+/* Custom Scrollbar - Webkit (Chrome/Edge/Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-gray-18), #666);
+    border-radius: 6px;
+    border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #333, #555);
+}
+
+/* Custom Scrollbar - Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-18) #f1f1f1;
+}
+
+/* Text Selection */
+::selection {
+    background: var(--color-gray-18);
+    color: #ffffff;
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: var(--color-gray-18);
+    color: #ffffff;
+    text-shadow: none;
+}
+
+/* Accent Color */
+html {
+    accent-color: var(--color-gray-18);
+}
+
+/* Form elements with accent color */
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"],
+progress {
+    accent-color: var(--color-gray-18);
+}
+
+/* ===================================================================
+ * # Skills Tooltip
+ * ------------------------------------------------------------------- */
+
+.skill-tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.skill-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 280px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px 14px;
+    position: absolute;
+    z-index: 9999;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -140px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 13px;
+    line-height: 1.4;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.skill-tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}
+
+.skill-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* OpenAI icon styling and fallback */
+/* OpenAI brand icon support */
+.folio-title a i.fa-brands.fa-openai {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+/* Portfolio title icons general styling */
+.folio-title i {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-left: 6px;
+    display: inline-block;
+    color: var(--color-1);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.folio-title a i {
+    font-size: 1.2em;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.folio-title a i:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+}
+
+/* Technology icons hover effects */
+.folio-title i.fa-android:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.folio-title i.fa-windows:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.folio-title i.fa-desktop:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.folio-title i.fa-microchip:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+.folio-title i.fa-brands.fa-openai:hover {
+    color: var(--color-2) !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+}
+
+/* Project links container */
+.folio-title .project-links {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 0.4em;
+    align-items: center;
+    margin-left: 10px;
+}
+
+/* spacing is handled by gap; no extra margins needed */
+
+/* Font Awesome OpenAI icon styling to match other icons */
+.folio-title .project-links .fa-openai {
+    font-size: 1.25em;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 0;
+    transition: all 0.2s;
+    color: var(--color-1);
+}
+
+.folio-title .project-links a:hover .fa-openai {
+    transform: scale(1.05);
+    color: #00a67e;
+}
+
+/* OpenAI SVG image should match icon color and hover */
+.folio-title .project-links .svg-icon {
+    width: 1.4em;
+    height: 1.4em;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--color-1);
+    fill: currentColor;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.folio-title .project-links a:hover .svg-icon {
+    transform: scale(1.1);
+    color: var(--color-2);
+}
+
+/* Mobile responsiveness for tooltips */
+@media screen and (max-width: 768px) {
+    .skill-tooltip .tooltip-text {
+        width: 240px;
+        margin-left: -120px;
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}
+
+/* ===================================================================
  * # Legal Menu (Discrete)
  * ------------------------------------------------------------------- */
 
 .legal-menu {
-    position: fixed;
+    position: absolute;
     top: 15px;
     right: 15px;
     z-index: 9999;
@@ -5173,10 +5507,12 @@ button.btn--secondary:focus {
     transition: all 0.3s ease;
     position: relative;
     z-index: 10001;
+    border-radius: 50%;
 }
 
 .legal-menu__toggle:hover {
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }
 
 .legal-menu__toggle:active {
@@ -5184,15 +5520,14 @@ button.btn--secondary:focus {
 }
 
 .legal-menu__toggle i {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
     transition: all 0.3s ease;
     pointer-events: none;
 }
 
 .legal-menu__toggle:hover i {
-    color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .legal-menu__dropdown {
@@ -5241,29 +5576,74 @@ button.btn--secondary:focus {
 
 /* Mobile responsiveness for legal menu */
 @media screen and (max-width: 600px) {
+    /* Legal menü tüm sayfalarda üstte sabit, scroll ile takip etmesin */
     .legal-menu {
+        position: absolute;
         top: 10px;
         right: 10px;
+        z-index: 9999;
     }
     
     .legal-menu__toggle {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
+        background: rgba(14, 15, 13, 0.7) !important;
+        border: none !important;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 10001;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    
+    .legal-menu__toggle:hover {
+        background: rgba(14, 15, 13, 0.9) !important;
+        transform: scale(1.05);
+    }
+    
+    .legal-menu__toggle:focus {
+        background: rgba(14, 15, 13, 0.7) !important;
+        outline: none !important;
+    }
+    
+    .legal-menu__toggle:active {
+        background: rgba(14, 15, 13, 0.8) !important;
+        transform: scale(0.95);
     }
     
     .legal-menu__toggle i {
-        font-size: 16px;
+        color: rgba(120, 120, 120, 0.4) !important;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        pointer-events: none;
     }
     
     .legal-menu__dropdown {
-        min-width: 150px;
-        right: -5px;
-        top: 42px;
+        min-width: 160px;
+        right: 0;
+        top: 48px;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .legal-menu__dropdown a {
-        padding: 12px 16px;
-        font-size: 13px;
+        padding: 14px 16px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .legal-menu__dropdown a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 1);
+        padding-left: 20px;
     }
 }
 
@@ -5383,5 +5763,51 @@ button.btn--secondary:focus {
     
     .legal-body p {
         text-align: left;
+    }
+}
+
+/* Force transparent background for mobile menu - Fix orange square issue */
+@media screen and (max-width: 768px) {
+    .legal-menu__toggle {
+        background: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
+    }
+    
+    .legal-menu__toggle:focus {
+        background: transparent !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    .legal-menu__toggle:active {
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    /* 3 nokta ikonu sabit ve masaüstü gibi görünsün */
+    .legal-menu__toggle i.fas.fa-ellipsis-h {
+        color: rgba(120, 120, 120, 0.4) !important;
+        font-size: 20px !important;
+        background: transparent !important;
+        border-radius: 50%;
+        box-shadow: none !important;
+    }
+}
+
+/* Mobilde hamburger menü ve ana navigasyonu tamamen gizle */
+@media screen and (max-width: 768px) {
+    .s-header__menu-toggle,
+    .s-header__nav-wrap,
+    .s-header__nav {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+    
+    /* Ana header sadece logo ile kalsın */
+    .s-header {
+        padding: 0 !important;
     }
 }

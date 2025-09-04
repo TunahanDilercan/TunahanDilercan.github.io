@@ -5,15 +5,40 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Tunahan Dilercan - Software Engineer & Developer</title>
-    <meta name="description" content="Tunahan Dilercan - Experienced Software Engineer specializing in full-stack development, mechatronics, and innovative technology solutions.">
+    <title>Tunahan Dilercan - Mobile & Embedded Systems Developer</title>
+    <meta name="description" content="Mobile app developer specializing in IoT, Android development and AI integrations. Explore my portfolio including Hanova mobile apps, Smart ESP App, and Prompt to PDF ChatGPT plugin.">
     <meta name="author" content="Tunahan Dilercan">
+    <meta name="keywords" content="mobile developer, android developer, IoT developer, embedded systems, ChatGPT plugin, mobile apps, mechatronics engineer, software development">
     
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://formsubmit.co; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co; frame-ancestors 'none';">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tunahandilercan.com.tr/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tunahandilercan.com.tr/">
+    <meta property="og:title" content="Tunahan Dilercan - Mobile & Embedded Developer">
+    <meta property="og:description" content="Mobile apps, IoT solutions, ChatGPT plugins and more. Mechatronics engineering student specializing in software development.">
+    <meta property="og:image" content="https://tunahandilercan.com.tr/images/avatars/tunahan-img.jpg">
+    <meta property="og:site_name" content="Tunahan Dilercan Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tunahandilercan.com.tr/">
+    <meta property="twitter:title" content="Tunahan Dilercan - Mobile & Embedded Developer">
+    <meta property="twitter:description" content="Mobile apps, IoT solutions, ChatGPT plugins and more. Mechatronics engineering student specializing in software development.">
+    <meta property="twitter:image" content="https://tunahandilercan.com.tr/images/avatars/tunahan-img.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    
+    <!-- Security Headers (Optimized for testing with Python server) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://formsubmit.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: blob:; font-src 'self' data: blob: https://cdnjs.cloudflare.com https://fonts.gstatic.com; connect-src 'self' https://formsubmit.co https://fonts.googleapis.com https://fonts.gstatic.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
     <!-- mobile specific
@@ -25,10 +50,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/security.css">
-
-    <!-- script
-    ================================================== -->
-    <script defer src="js/vendor/fontawesome/all.min.js"></script>
+    <!-- Font Awesome CDN v5.15.4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
 
     <!-- favicons
     ================================================== -->
@@ -43,6 +66,8 @@
 
 <body id="top" class="ss-preload">
 
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
 
     <!-- preloader
     ================================================== -->
@@ -65,10 +90,10 @@
             <i class="fas fa-ellipsis-h"></i>
         </div>
         <div class="legal-menu__dropdown" id="legalDropdown">
-            <a href="contact-us">Contact Us</a>
-            <a href="privacy-policy">Privacy Policy</a>
-            <a href="terms-of-service">Terms of Service</a>
-            <a href="cookie-policy">Cookie Policy</a>
+            <a href="contact-us.html">Contact Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-of-service.html">Terms of Service</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
         </div>
     </div>
 
@@ -138,7 +163,7 @@
 
         <div class="row">
             <div class="column large-3 tab-12">
-                <img class="s-about__pic" src="images/avatars/user-06.jpg" alt="">
+                <img class="s-about__pic" src="images/avatars/tunahan-img.jpg" alt="">
             </div>
             <div class="column large-9 tab-12 s-about__content">
                 <h3>About Me</h3>
@@ -160,7 +185,7 @@
                         
                     </div>
                     <div class="column w-1000-stack">
-                        <a href="#0" class="btn btn--download">
+                        <a href="files/TunahanDilercanCV.pdf" class="btn btn--download" download>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1)"><path d="M12 16L16 11 13 11 13 4 11 4 11 11 8 11z"></path><path d="M20,18H4v-7H2v7c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2v-7h-2V18z"></path></svg>
                             Download CV
                         </a>
@@ -179,26 +204,25 @@
         <!-- 
         <div class="row s-resume__section">
             <div class="column large-3 tab-12">
-                <h3 class="section-header-allcaps">Career</h3>
+                <h3 class="section-header-allcaps">Work Experience</h3>
             </div>
             <div class="column large-9 tab-12">
                 <div class="resume-block">
 
                     <div class="resume-block__header">
-                        <h4 class="h3">Dropbox</h4>
+                        <h4 class="h3">Software Development Intern</h4>
                         <p class="resume-block__header-meta">
-                            <span>Product Designer</span> 
+                            <span>Full-Stack Development & Cybersecurity</span> 
                             <span class="resume-block__header-date">
-                                August 2019 - Present
+                                2024 - Present
                             </span>
                         </p>
                     </div>
 
                     <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore 
-                    vero quidem nobis maxime dolorem aliquam quisquam eum ipsum amet. Vitae 
-                    aut atque fuga dolorem. Vel voluptatibus fugiat nam. Impedit aperiam 
-                    nesciunt facilis! Porro architecto dicta inventore tempora ratione quia odio.
+                    Gaining hands-on experience in web application development, embedded systems, and cybersecurity practices. 
+                    Learning and applying modern technologies including Python, JavaScript, embedded C/C++, and Mixed Reality frameworks. 
+                    Contributing to real-world projects in IoT systems, web development, and security assessment tools.
                     </p>
 
                 </div>
@@ -206,20 +230,19 @@
                 <div class="resume-block">
 
                     <div class="resume-block__header">
-                        <h4 class="h3">Facebook</h4>
+                        <h4 class="h3">Student Researcher</h4>
                         <p class="resume-block__header-meta">
-                            <span>UI/UX Designer</span> 
+                            <span>Mechatronics & AI Research</span> 
                             <span class="resume-block__header-date">
-                                August 2016 - July 2019
+                                2023 - Present
                             </span>
                         </p>
                     </div>
 
                     <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore 
-                    vero quidem nobis maxime dolorem aliquam quisquam eum ipsum amet. Vitae 
-                    aut atque fuga dolorem. Vel voluptatibus fugiat nam. Impedit aperiam 
-                    nesciunt facilis! Porro architecto dicta inventore tempora ratione quia odio.
+                    Conducting research in mechatronics systems, artificial intelligence applications, and Mixed Reality technologies. 
+                    Developing innovative solutions for automation, robotics, and intelligent systems. 
+                    Participating in academic projects and contributing to open-source initiatives.
                     </p>
 
                 </div>
@@ -271,37 +294,42 @@
             <div class="column large-9 tab-12">
                 <div class="resume-block">
 
-                    <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore 
-                    vero quidem nobis maxime dolorem aliquam quisquam eum ipsum amet. Vitae 
-                    aut atque fuga dolorem. Vel voluptatibus fugiat nam. Impedit aperiam 
-                    nesciunt facilis! Porro architecto dicta inventore tempora ratione quia odio.
-                    </p>
-
                     <ul class="skill-bars-fat">
                         <li>
-                        <div class="progress percent85"></div>
-                        <strong>HTML</strong>
+                        <div class="progress percent70">
+                            <strong>Mobile Development</strong>
+                        </div>
                         </li>
                         <li>
-                        <div class="progress percent85"></div>
-                        <strong>CSS</strong>
+                        <div class="progress percent70">
+                            <strong>Python</strong>
+                        </div>
                         </li>
                         <li>
-                        <div class="progress percent65"></div>
-                        <strong>Javascript</strong>
+                        <div class="progress percent70">
+                            <strong>Kotlin</strong>
+                        </div>
                         </li>
                         <li>
-                        <div class="progress percent90"></div>
-                        <strong>Figma</strong>
+                        <div class="progress percent50">
+                            <strong>Flutter Framework</strong>
+                        </div>
                         </li>
                         <li>
-                        <div class="progress percent75"></div>
-                        <strong>Illustrator</strong>
+                        <div class="progress percent60">
+                            <strong>MySQL</strong>
+                        </div>
                         </li>
                         <li>
-                        <div class="progress percent60"></div>
-                        <strong>Photoshop</strong>
+                        <div class="progress percent60">
+                            <strong>Machine Learning</strong>
+                        </div>
+                        </li>
+                        <li class="skill-tooltip">
+                        <div class="progress percent60">
+                            <strong>Secure Coding</strong>
+                        </div>
+                        <span class="tooltip-text">He was selected through an exam and has completed 176 hours of face-to-face training in White Hat Hacking, Basic Linux, Penetration Testing, Malware Analysis & Reverse Engineering, and Applied Web Security.</span>
                         </li>
                     </ul>
 
@@ -321,7 +349,7 @@
             <div class="col-twelve">
                 <h5>Portfolio</h5>
                 <h1>Check Out Some of My Works.</h1>
-                <p class="lead">Below are some of the projects I've worked on. Click on the icons to view the source codes of the projects.</p>
+                <p class="lead">Below, you can find some of the projects I have worked on, published, or shared the source code for. Click on the icons to view the projects.</p>
             </div>
         </div> <!-- /section-intro-->
 
@@ -330,145 +358,71 @@
 
                 <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
 
+                    <!-- Promoted to top: Google Play project -->
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
-                            <h4 class="folio-title">Mechatronics Project
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
+                            <h4 class="folio-title">Hanova
+                                <a href="https://play.google.com/store/apps/dev?id=8414973691889516106" target="_blank"><i class="fab fa-google-play"></i></a>
                             </h4>
                             <span class="folio-types">
-                                Engineering Project
+                                Mobile Applications
                             </span>
                             <div class="project-description">
-                                Developing innovative mechatronics solutions combining mechanical and electronic systems with advanced control algorithms.
+                                I develop mobile applications and also add the ones I have published here.
                             </div>
                         </div>
                     </div>
 
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
-                            <h4 class="folio-title">Web Development
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
+                            <h4 class="folio-title">Prompt to PDF
+                                <span class="project-links">
+                                    <a href="https://github.com/TunahanDilercan/Prompt-to-PDF" target="_blank" aria-label="GitHub Repository" title="GitHub" class="icon-link"><i class="fab fa-github"></i></a>
+                                    <a href="https://chatgpt.com/g/g-6790c6ff33988191a78371fbc1267981-prompt-to-pdf" target="_blank" aria-label="OpenAI / ChatGPT" title="ChatGPT Plugin" class="icon-link">
+                                        <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" focusable="false">
+                                            <path d="M260.4 249.8L260.4 201.2C260.4 197.1 261.9 194 265.5 192L363.3 135.7C376.6 128 392.5 124.4 408.9 124.4C470.3 124.4 509.3 172 509.3 222.7C509.3 226.3 509.3 230.4 508.8 234.5L407.3 175.1C401.2 171.5 395 171.5 388.9 175.1L260.4 249.8zM488.7 439.2L488.7 323C488.7 315.8 485.6 310.7 479.5 307.1L351 232.4L393 208.3C396.6 206.3 399.7 206.3 403.2 208.3L501 264.7C529.2 281.1 548.1 315.9 548.1 349.7C548.1 388.6 525.1 424.5 488.7 439.3L488.7 439.3zM230.2 336.8L188.2 312.2C184.6 310.2 183.1 307.1 183.1 303L183.1 190.4C183.1 135.6 225.1 94.1 281.9 94.1C303.4 94.1 323.4 101.3 340.3 114.1L239.4 172.5C233.3 176.1 230.2 181.2 230.2 188.4L230.2 336.9L230.2 336.9zM320.6 389L260.4 355.2L260.4 283.5L320.6 249.7L380.8 283.5L380.8 355.2L320.6 389zM359.3 544.7C337.8 544.7 317.8 537.5 300.9 524.7L401.8 466.3C407.9 462.7 411 457.6 411 450.4L411 301.9L453.5 326.5C457.1 328.5 458.6 331.6 458.6 335.7L458.6 448.3C458.6 503.1 416.1 544.6 359.3 544.6L359.3 544.6zM237.8 430.5L140.1 374.2C111.9 357.8 93 323 93 289.2C93 249.8 116.6 214.4 152.9 199.6L152.9 316.3C152.9 323.5 156 328.6 162.1 332.2L290.1 406.4L248.1 430.5C244.5 432.5 241.4 432.5 237.9 430.5zM232.2 514.5C174.3 514.5 131.8 471 131.8 417.2C131.8 413.1 132.3 409 132.8 404.9L233.7 463.3C239.8 466.9 246 466.9 252.1 463.3L380.6 389.1L380.6 437.7C380.6 441.8 379.1 444.9 375.5 446.9L277.7 503.2C264.4 510.9 248.5 514.5 232.1 514.5L232.1 514.5zM359.2 575.4C421.2 575.4 472.9 531.4 484.6 473C541.9 458.1 578.8 404.4 578.8 349.6C578.8 313.8 563.4 278.9 535.8 253.9C538.4 243.1 539.9 232.4 539.9 221.6C539.9 148.4 480.5 93.6 411.9 93.6C398.1 93.6 384.8 95.6 371.5 100.3C348.5 77.8 316.7 63.4 281.9 63.4C219.9 63.4 168.2 107.4 156.5 165.8C99.2 180.6 62.3 234.4 62.3 289.2C62.3 325 77.7 359.9 105.3 384.9C102.7 395.7 101.2 406.4 101.2 417.2C101.2 490.4 160.6 545.2 229.2 545.2C243 545.2 256.3 543.2 269.6 538.5C292.6 561 324.4 575.4 359.2 575.4z"/>
+                                        </svg>
+                                    </a>
+                                </span>
                             </h4>
                             <span class="folio-types">
-                                Full Stack Development
+                                ChatGPT Plugin & LaTeX Processing
                             </span>
                             <div class="project-description">
-                                Creating modern, responsive web applications using cutting-edge technologies and best practices in software development.
+                                Convert complex texts, formulas, and equations into professional PDFs. A ChatGPT plugin that converts LaTeX content into professional-quality PDFs, ensuring accurate formatting for complex texts, formulas, and technical documents.
                             </div>
                         </div>
                     </div>
 
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
-                            <h4 class="folio-title">Management Information System
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
+                            <h4 class="folio-title">Smart ESP App
+                                <a href="https://github.com/TunahanDilercan/SmartESPApp" target="_blank" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
-                                Database & System Design
+                                IoT & Android Development
                             </span>
                             <div class="project-description">
-                                Designing and implementing comprehensive management information systems to streamline business processes and data management.
+                                Real-time data collection from various sensors (temperature, humidity, motion, gas, piezo) and remote device control using ESP8266 microcontroller and Android application. Complete IoT solution for smart home automation.
                             </div>
                         </div>
                     </div>
 
                     <div class="bgrid folio-item hidden">
                         <div class="item-wrap">
-                            <h4 class="folio-title">IoT Solutions
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
+                            <h4 class="folio-title">GoodbyeDPI GUI
+                                <a href="https://github.com/TunahanDilercan/GoodbyeDPI_GUI" target="_blank" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
                             </h4>
                             <span class="folio-types">
-                                Internet of Things
+                                Desktop Application & Network Tools
                             </span>
                             <div class="project-description">
-                                Building connected devices and smart systems that integrate sensors, actuators, and cloud-based data processing.
+                                A user-friendly graphical interface (GUI) for GoodbyeDPI. Simplifies the use of DPI bypass tools with an intuitive interface, making network freedom tools more accessible to users.
                             </div>
                         </div>
                     </div>
 
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">Mobile Applications
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fab fa-github"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                Mobile Development
-                            </span>
-                            <div class="project-description">
-                                Developing cross-platform mobile applications with modern frameworks and user-centric design principles.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">Data Analysis
-                                <a href="https://github.com/TunahanDilercan" target="_blank"><i class="fa fa-cloud"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                Data Science & Analytics
-                            </span>
-                            <div class="project-description">
-                                Analyzing complex datasets to extract meaningful insights and support data-driven decision making processes.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">E-Commerce Platform
-                                <a href="https://play.google.com/store" target="_blank"><i class="fab fa-google-play"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                Mobile Commerce
-                            </span>
-                            <div class="project-description">
-                                Full-featured e-commerce mobile application with secure payment integration and user-friendly shopping experience.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">Cloud Infrastructure
-                                <a href="https://aws.amazon.com" target="_blank"><i class="fab fa-aws"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                DevOps & Cloud
-                            </span>
-                            <div class="project-description">
-                                Scalable cloud infrastructure setup using AWS services with automated deployment and monitoring solutions.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">React Dashboard
-                                <a href="https://reactjs.org" target="_blank"><i class="fab fa-react"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                Frontend Development
-                            </span>
-                            <div class="project-description">
-                                Modern admin dashboard built with React, featuring real-time data visualization and responsive design.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bgrid folio-item hidden">
-                        <div class="item-wrap">
-                            <h4 class="folio-title">Docker Containerization
-                                <a href="https://docker.com" target="_blank"><i class="fab fa-docker"></i></a>
-                            </h4>
-                            <span class="folio-types">
-                                DevOps & Containers
-                            </span>
-                            <div class="project-description">
-                                Microservices architecture implementation using Docker containers with orchestration and load balancing.
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div> <!-- /portfolio-wrapper -->
                 <div class="show-more-container">
@@ -501,9 +455,9 @@
                 <div class="contact-form">
                     <form id="contactForm" action="https://formsubmit.co/tunahandilercan@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="New message from portfolio site">
-                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://tunahandilercan.github.io/thank-you.html">
+                        <input type="hidden" name="_next" value="https://tunahandilercan.com.tr/thank-you.html">
 
                         <div class="form-group">
                             <label for="email">Your Email</label>
@@ -648,6 +602,10 @@
         });
     });
     </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "527b28393da340e790cefb1ee0e6f583"}'></script>
+    <!-- End Cloudflare Web Analytics -->
 
 </body>
 

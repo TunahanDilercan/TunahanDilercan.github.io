@@ -1,20 +1,22 @@
 User-agent: *
 Allow: /
 
+# Allow access to CSS and JS for proper indexing
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
 # Block access to sensitive directories
-Disallow: /js/
-Disallow: /css/
 Disallow: /.git/
-Disallow: /backup/
-Disallow: /temp/
-Disallow: /logs/
+Disallow: /files/.gitkeep
 
 # Security related
-Disallow: /*?*
-Disallow: /*.php$
 Disallow: /*.inc$
 Disallow: /*.conf$
 Disallow: /*.log$
 
 # Sitemap
-Sitemap: https://tunahandilercan.github.io/sitemap.xml
+Sitemap: https://tunahandilercan.com.tr/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
