@@ -16,51 +16,38 @@
    /* Portfolio Show More
     * -------------------------------------------------- */
     const ssPortfolioShowMore = function() {
-        
-        console.log('ssPortfolioShowMore function called');
-        
         const showMoreBtn = document.querySelector('#showMoreBtn');
-        console.log('Button element:', showMoreBtn);
         
         if (!showMoreBtn) {
-            console.error('Show More button not found!');
-            return;
+            return; // Exit silently if button not found
         }
 
-        console.log('Show More button found, adding event listener');
+        // Check if already initialized
+        if (showMoreBtn.hasAttribute('data-initialized')) {
+            return;
+        }
         
         showMoreBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Show More button clicked!');
             
             const hiddenItems = document.querySelectorAll('.folio-item.hidden');
-            console.log('Found hidden items:', hiddenItems.length);
             
-            if (hiddenItems.length === 0) {
-                console.log('No hidden items found, checking all items:');
-                const allItems = document.querySelectorAll('.folio-item');
-                console.log('Total items:', allItems.length);
-                allItems.forEach((item, index) => {
-                    console.log(`Item ${index}:`, item.className);
-                });
-            }
-            
-            hiddenItems.forEach(function(item, index) {
-                console.log('Showing item', index, item);
+            hiddenItems.forEach(function(item) {
                 item.classList.remove('hidden');
-                item.style.display = 'block';
+                item.style.display = '';
             });
             
             if (hiddenItems.length > 0) {
                 this.style.display = 'none';
-                console.log('Button hidden');
             }
         });
 
+        // Mark as initialized
+        showMoreBtn.setAttribute('data-initialized', 'true');
     }; // end ssPortfolioShowMore
 
 
-   /* Initializeder
+   /* Initialize
     * -------------------------------------------------- */
     const ssPreloader = function() {
 
@@ -537,3 +524,28 @@ document.addEventListener('click', function(event) {
 
 // Ensure function is available globally
 window.toggleLegalMenu = toggleLegalMenu;
+
+// Mobile-friendly single-logo detection and safe link attributes
+document.addEventListener('DOMContentLoaded', function() {
+    // Use the actual h4.folio-title nodes
+    const folioTitles = document.querySelectorAll('h4.folio-title');
+
+    folioTitles.forEach(function(title) {
+        const projectLinks = title.querySelector('.project-links');
+        // Direct icon link is a direct child of h4 in single-logo case
+        const directLink = title.querySelector(':scope > a');
+
+        if (!projectLinks && directLink) {
+            // Mark as single-logo for CSS spacing tweaks
+            title.classList.add('single-logo');
+
+            // Ensure safe new-tab behavior without JS interception
+            directLink.setAttribute('rel', 'noopener noreferrer');
+            if (!directLink.getAttribute('target')) {
+                directLink.setAttribute('target', '_blank');
+            }
+        }
+    });
+
+    // Rely on native anchor navigation for both single and multi logo links.
+});
