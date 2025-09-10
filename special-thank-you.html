@@ -85,15 +85,11 @@
         
         // Dynamic content generation
         document.addEventListener('DOMContentLoaded', function() {
-            const data = ['4d657268616261207365766769', '6c696d21203c6272', '3e3c6272', '3e0a0a20202020', '2020202020202020', '4275206f7a656c20736179', '666120736164656365207365', '6e696e20696369', '6e2074617361726c', '616e64c4b12e20506f', '7274666f6c79', '616d612079617a', '64c4b1c49f', '6e20686572206d6573616a20626', '5696e696d20696369', '6e2064', '65c49f65726c69', '2c20616d', '6120736', '5696e696e', '206d6573616a6c', '6172c4b16ec4b17', '20636f6b', '206461686120', '6f7a656c2e2e2e20e29ca80a202020', '2020202020202020', '2020446573746566', '65727265696e207665', '20736576676', '696e20736179', '6573696e6465206275', '20706', '726f6a656c65726920686179', '6174612067652', '6369726', '7978', '6f72756d2e203c', '6272', '3e53656e2062656e69', '6d20656e20', '627579', '756b206d6f746976', '6173796f6e206b61796e61c49fc4b16dsin21', 'c2b12e203c6272', '3e3c6272', '3e0a20202020', '20202020202020', '202053656e69206', '3636', 'k20736576697979', '6f72756d21'];
-            
             const heart = '\u{1F495}';
             const sparkles = '\u{2728}';
             const gift = '\u{1F381}';
             const star = '\u{1F31F}';
             const home = '\u{1F3E0}';
-            
-            function d(h) { return h.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte, 16))).join(''); }
             
             const specialContent = document.querySelector('.special-content');
             const heartEl = document.querySelector('.heart');
@@ -102,17 +98,21 @@
             const btnEl = document.querySelector('.back-btn');
             
             heartEl.textContent = heart;
-            titleEl.textContent = d('4f7a656c204d6573616a');
+            titleEl.textContent = 'Özel Mesaj';
             
-            let content = '';
-            for(let i = 0; i < data.length; i++) {
-                content += d(data[i]);
-            }
-            content += ` ${sparkles}<br><br>`;
-            content += d('53656e69206375676f6b20736576697979756d2120') + gift;
+            const content = `
+                Merhaba sevgilim! ${heart}<br><br>
+                
+                Bu özel sayfa sadece senin için tasarlandı. Portfolio sayfama yazdığın her mesaj benim için değerli, ama senin mesajların çok daha özel... ${sparkles}<br><br>
+                
+                Desteğerein ve sevgin sayesinde bu projeleri hayata geçiriyorum. ${star}<br>
+                Sen benim en büyük motivasyon kaynağımsın! ${gift}<br><br>
+                
+                Seni çok seviyorum! ${sparkles}${heart}${sparkles}
+            `;
             
             textEl.innerHTML = content;
-            btnEl.innerHTML = d('416e612053617966617961204475796e20') + home;
+            btnEl.innerHTML = `Ana Sayfaya Dön ${home}`;
         });
         
         // Visual effects
