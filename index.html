@@ -574,6 +574,35 @@
             window.location.href = link;
         });
     });
+
+    // Intercept contact form submit and use FormSubmit AJAX, then redirect locally
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async function (e) {
+            try {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const response = await fetch('https://formsubmit.co/ajax/tunahandilercan@gmail.com', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    // Redirect to local thank-you page
+                    window.location.href = 'thank-you.html';
+                } else {
+                    // Fallback to default behavior if AJAX fails on server side
+                    form.submit();
+                }
+            } catch (err) {
+                // Network or other error – fallback to default submission
+                form.submit();
+            }
+        });
+    });
     </script>
 
     <!-- Conditional Cloudflare Web Analytics -->
