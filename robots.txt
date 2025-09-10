@@ -16,7 +16,7 @@ Disallow: /*.conf$
 Disallow: /*.log$
 
 # Sitemap
-Sitemap: https://tunahandilercan.com.tr/sitemap.xml
+Sitemap: https://www.tunahandilercan.com.tr/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 1
