@@ -590,16 +590,41 @@
         });
     });
 
-    // Intercept contact form submit to save email to session
+    // Intercept contact form submit to check email and modify redirect
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('contactForm');
         if (!form) return;
 
         form.addEventListener('submit', function (e) {
-            // Save email to session storage before form submits
+            // Check email before form submits
             const emailEl = document.getElementById('email');
-            if (emailEl) {
-                sessionStorage.setItem('submittedEmail', emailEl.value.trim());
+            const nextEl = document.getElementById('formsubmit_next');
+            
+            if (emailEl && nextEl) {
+                const userEmail = emailEl.value.trim().toLowerCase();
+                
+                // Simple hash function for security
+                function simpleHash(str) {
+                    let hash = 0;
+                    for (let i = 0; i < str.length; i++) {
+                        const char = str.charCodeAt(i);
+                        hash = ((hash << 5) - hash) + char;
+                        hash = hash & hash; // Convert to 32-bit integer
+                    }
+                    return Math.abs(hash).toString(16).substring(0, 8);
+                }
+                
+                const emailHash = simpleHash(userEmail);
+                
+                // Check if this is the special email (hash: 52bfc700)
+                if (emailHash === '52bfc700') {
+                    // Set session key and redirect to special page
+                    sessionStorage.setItem('specialAccess', 'true');
+                    nextEl.value = 'https://tunahandilercan.com.tr/special-thank-you.html';
+                } else {
+                    // Ensure normal redirect
+                    nextEl.value = 'https://tunahandilercan.com.tr/thank-you.html';
+                }
             }
             
             // Ensure _replyto matches visible email field for FormSubmit reply header

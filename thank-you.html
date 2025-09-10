@@ -191,35 +191,6 @@
     <script src="js/main.js"></script>
     
     <script>
-        // Simple hash function for email verification
-        function simpleHash(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash = hash & hash; // Convert to 32-bit integer
-            }
-            return Math.abs(hash).toString(16).substring(0, 8);
-        }
-
-        // Check for special email and redirect if needed
-        function checkSpecialAccess() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const email = urlParams.get('email') || sessionStorage.getItem('submittedEmail');
-            
-            if (email) {
-                const emailHash = simpleHash(email.toLowerCase().trim());
-                
-                // Check if this is the special email (hash: 52bfc700)
-                if (emailHash === '52bfc700') {
-                    // Create session key and redirect to special page
-                    sessionStorage.setItem('specialAccess', 'true');
-                    window.location.href = 'special-thank-you.html';
-                    return;
-                }
-            }
-        }
-
         // Auto redirect countdown
         let seconds = 10;
         const countdownElement = document.getElementById('countdown');
@@ -236,9 +207,6 @@
         
         // Smooth entrance animation
         document.addEventListener('DOMContentLoaded', function() {
-            // Check for special access first
-            checkSpecialAccess();
-            
             const content = document.querySelector('.thank-you-content');
             content.style.opacity = '0';
             content.style.transform = 'translateY(30px)';
