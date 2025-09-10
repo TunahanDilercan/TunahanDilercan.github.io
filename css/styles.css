@@ -4859,6 +4859,25 @@ html {
     50% { border-color: white; }
 }
 
+/* Mobile responsive for Hello World */
+@media screen and (max-width: 768px) {
+    #hello-world {
+        font-size: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #hello-world {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #hello-world {
+        font-size: 1.8rem;
+    }
+}
+
 /* ===================================================================
  * Portfolio Styles (inspired by modern design)
  * ================================================================== */
