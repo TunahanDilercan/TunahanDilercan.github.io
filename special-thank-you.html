@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>💕 Special Message - Tunahan Dilercan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
+    <style>
+        .special-message {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        .special-content {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .heart {
+            font-size: 3rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .special-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .special-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="special-message">
+        <div class="special-content">
+            <div class="heart"></div>
+            <h1 class="special-title"></h1>
+            <p class="special-text"></p>
+            <a href="index.html" class="back-btn"></a>
+        </div>
+    </div>
+    
+    <script>
+        // Access validation
+        if (sessionStorage.getItem('specialAccess') !== 'true') {
+            window.location.href = 'index.html';
+        } else {
+            sessionStorage.removeItem('specialAccess');
+        }
+        
+        // Dynamic content generation
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = ['4d657268616261207365766769', '6c696d21203c6272', '3e3c6272', '3e0a0a20202020', '2020202020202020', '4275206f7a656c20736179', '666120736164656365207365', '6e696e20696369', '6e2074617361726c', '616e64c4b12e20506f', '7274666f6c79', '616d612079617a', '64c4b1c49f', '6e20686572206d6573616a20626', '5696e696d20696369', '6e2064', '65c49f65726c69', '2c20616d', '6120736', '5696e696e', '206d6573616a6c', '6172c4b16ec4b17', '20636f6b', '206461686120', '6f7a656c2e2e2e20e29ca80a202020', '2020202020202020', '2020446573746566', '65727265696e207665', '20736576676', '696e20736179', '6573696e6465206275', '20706', '726f6a656c65726920686179', '6174612067652', '6369726', '7978', '6f72756d2e203c', '6272', '3e53656e2062656e69', '6d20656e20', '627579', '756b206d6f746976', '6173796f6e206b61796e61c49fc4b16dsin21', 'c2b12e203c6272', '3e3c6272', '3e0a20202020', '20202020202020', '202053656e69206', '3636', 'k20736576697979', '6f72756d21'];
+            
+            const heart = '\u{1F495}';
+            const sparkles = '\u{2728}';
+            const gift = '\u{1F381}';
+            const star = '\u{1F31F}';
+            const home = '\u{1F3E0}';
+            
+            function d(h) { return h.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte, 16))).join(''); }
+            
+            const specialContent = document.querySelector('.special-content');
+            const heartEl = document.querySelector('.heart');
+            const titleEl = document.querySelector('.special-title');
+            const textEl = document.querySelector('.special-text');
+            const btnEl = document.querySelector('.back-btn');
+            
+            heartEl.textContent = heart;
+            titleEl.textContent = d('4f7a656c204d6573616a');
+            
+            let content = '';
+            for(let i = 0; i < data.length; i++) {
+                content += d(data[i]);
+            }
+            content += ` ${sparkles}<br><br>`;
+            content += d('53656e69206375676f6b20736576697979756d2120') + gift;
+            
+            textEl.innerHTML = content;
+            btnEl.innerHTML = d('416e612053617966617961204475796e20') + home;
+        });
+        
+        // Visual effects
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.cssText = `
+                        position: fixed;
+                        top: -10px;
+                        left: ${Math.random() * 100}%;
+                        width: 10px;
+                        height: 10px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        animation: fall 3s linear;
+                        z-index: 1000;
+                        border-radius: 50%;
+                    `;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+        
+        const style = document.createElement('style');
+        style.textContent = `@keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }`;
+        document.head.appendChild(style);
+        
+        createConfetti();
+        setInterval(createConfetti, 5000);
+    </script>
+</body>
+</html>
