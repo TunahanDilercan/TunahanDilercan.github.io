@@ -5,20 +5,19 @@
     <title>Special Message - Tunahan Dilercan</title>
     <meta name="description" content="A special message for someone special">
     <meta name="author" content="Tunahan Dilercan">
+    <meta name="viewport" content="width=device-width, initial-scale=1"        <div class="mo-container"></div>
+    </div>
+
+    <div class="bottom-text-static">
+        <p>just for you ✨</p>
+    </div>
+
     <div class="back-button-container">
         <a href="index.html" class="bubble-btn">
             <span class="bubble-icon">🏠</span>
             <span class="bubble-text">home</span>
         </a>
-    </div>
-
-    <div class="bottom-text">
-        <p>just for you ✨</p>
-    </div>
-
-    <div class="pixel-confetti-container"></div>eta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Favicons -->
+    </div>    <!-- Favicons -->
     <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg" />
     <link rel="shortcut icon" href="images/favicon/favicon.ico" />
@@ -159,27 +158,20 @@
             transform: translateY(0);
         }
 
-        .bottom-text {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
+        .bottom-text-static {
+            text-align: center;
+            margin-top: 4rem;
+            z-index: 10;
+            position: relative;
             opacity: 0;
-            transform: translateX(-50%) translateY(20px);
-            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 2s forwards;
         }
 
-        .bottom-text.visible {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .bottom-text p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
+        .bottom-text-static p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-align: center;
         }
 
@@ -672,20 +664,17 @@
 
         requestAnimationFrame(render);
 
-        // Scroll detection for bottom elements
+        // Scroll detection for home button only
         let scrolled = false;
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
-            const bottomText = document.querySelector('.bottom-text');
             const backButton = document.querySelector('.back-button-container');
             
             if (scrollY > 50 && !scrolled) {
                 scrolled = true;
-                bottomText.classList.add('visible');
                 backButton.classList.add('visible');
             } else if (scrollY <= 50 && scrolled) {
                 scrolled = false;
-                bottomText.classList.remove('visible');
                 backButton.classList.remove('visible');
             }
         });
@@ -711,14 +700,6 @@
         // Start pixel confetti
         createPixelConfetti();
         setInterval(createPixelConfetti, 3000);
-
-        // Trigger scroll elements on page load after animation
-        setTimeout(() => {
-            window.scrollTo(0, 100);
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 500);
-        }, 3000);
     </script>
 </body>
 </html>
