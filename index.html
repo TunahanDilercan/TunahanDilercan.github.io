@@ -8,22 +8,7 @@
     <title>Tunahan Dilercan</title>
     <meta name="description" content="Personal website of Tunahan Dilercan. Projects, portfolio, and contact.">
     <meta name="author" content="Tunahan Dilercan">
-    <meta name="keywords" content="mobile developer, android developer, IoT developer, embedded syste                // Email verification for access control
-                const accessHash = '52bfc700';
-                const userEmail = (emailEl?.value || '').trim().toLowerCase();
-                
-                // Hash function
-                function simpleHash(str) {
-                    let hash = 0;
-                    for (let i = 0; i < str.length; i++) {
-                        const char = str.charCodeAt(i);
-                        hash = ((hash << 5) - hash) + char;
-                        hash = hash & hash;
-                    }
-                    return Math.abs(hash).toString(16);
-                }
-                
-                const userEmailHash = simpleHash(userEmail);n, mobile apps, mechatronics engineer, software development">
+    <meta name="keywords" content="mobile developer, android developer, IoT developer, embedded systems, mobile apps, mechatronics engineer, software development">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://tunahandilercan.com.tr/" />
@@ -138,10 +123,10 @@
             <i class="fas fa-ellipsis-h"></i>
         </div>
         <div class="legal-menu__dropdown" id="legalDropdown">
-            <a href="contact-us.html">Contact Us</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms-of-service.html">Terms of Service</a>
-            <a href="cookie-policy.html">Cookie Policy</a>
+            <a href="/contact-us/">Contact Us</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/terms-of-service/">Terms of Service</a>
+            <a href="/cookie-policy/">Cookie Policy</a>
         </div>
     </div>
 
@@ -505,7 +490,7 @@
                         <input type="hidden" id="formsubmit_subject" name="_subject" value="New message from portfolio site">
                         <input type="hidden" id="formsubmit_captcha" name="_captcha" value="false">
                         <input type="hidden" id="formsubmit_template" name="_template" value="table">
-                        <input type="hidden" id="formsubmit_next" name="_next" value="https://tunahandilercan.com.tr/thank-you.html">
+                        <input type="hidden" id="formsubmit_next" name="_next" value="https://tunahandilercan.com.tr/thank-you/">
                         <input type="hidden" id="formsubmit_replyto" name="_replyto" value="">
 
                         <div class="form-group">
@@ -672,10 +657,10 @@
                     if (emailHash === '52bfc700') {
                         // Set session key and redirect to special page
                         sessionStorage.setItem('specialAccess', 'true');
-                        window.location.href = 'special-thank-you.html';
+                        window.location.href = '/special-thank-you/';
                     } else {
                         // Redirect to normal thank you page
-                        window.location.href = 'thank-you.html';
+                        window.location.href = '/thank-you/';
                     }
                 } else {
                     // If AJAX fails, fallback to normal form submission
@@ -683,9 +668,9 @@
                     if (nextEl) {
                         if (emailHash === '52bfc700') {
                             sessionStorage.setItem('specialAccess', 'true');
-                            nextEl.value = 'https://tunahandilercan.com.tr/special-thank-you.html';
+                            nextEl.value = 'https://tunahandilercan.com.tr/special-thank-you/';
                         } else {
-                            nextEl.value = 'https://tunahandilercan.com.tr/thank-you.html';
+                            nextEl.value = 'https://tunahandilercan.com.tr/thank-you/';
                         }
                     }
                     form.submit();
@@ -696,9 +681,9 @@
                 if (nextEl) {
                     if (emailHash === '52bfc700') {
                         sessionStorage.setItem('specialAccess', 'true');
-                        nextEl.value = 'https://tunahandilercan.com.tr/special-thank-you.html';
+                        nextEl.value = 'https://tunahandilercan.com.tr/special-thank-you/';
                     } else {
-                        nextEl.value = 'https://tunahandilercan.com.tr/thank-you.html';
+                        nextEl.value = 'https://tunahandilercan.com.tr/thank-you/';
                     }
                 }
                 form.submit();

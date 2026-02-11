@@ -285,11 +285,25 @@
             }
         });
 
-        folioLinks.forEach(function(link, index) {
-            link.addEventListener("click", function(e) {
-                e.preventDefault();
-                modals[index].show();
-            });
+        // Only attach click handlers to internal links that have modals
+        let modalIndex = 0;
+        folioLinks.forEach(function(link) {
+            let modalbox = link.getAttribute('href');
+            
+            // Skip external links - let them navigate normally
+            if (modalbox && modalbox.startsWith('http')) {
+                return;
+            }
+            
+            // Only attach handler for internal # links that have a corresponding modal
+            if (modalbox && modalbox.startsWith('#')) {
+                let currentModalIndex = modalIndex;
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    modals[currentModalIndex].show();
+                });
+                modalIndex++;
+            }
         });
 
     };  // end ssLightbox

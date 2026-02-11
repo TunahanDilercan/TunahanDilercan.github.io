@@ -5038,6 +5038,26 @@ html {
     text-align: left;
 }
 
+@media screen and (max-width: 900px) {
+    .section-intro h1 {
+        font-size: 3.2rem;
+    }
+
+    #portfolio .folio-title {
+        font-size: 2.2rem;
+        gap: 1rem;
+        padding: 2rem 1.6rem 0.3rem 1.6rem;
+    }
+
+    #portfolio .project-description {
+        font-size: 1.7rem;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+    }
+}
+
+/* Mobile portfolio styles consolidated in the main 768px block below */
+
 .hidden {
     display: none !important;
 }
@@ -5844,6 +5864,11 @@ progress {
         padding-bottom: 8rem !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
+        --portfolio-icon-size: 24px !important;
+        --portfolio-icon-hit: 44px !important;
+        --portfolio-icon-gap: 0px !important;
+        --portfolio-icon-inset: 10px !important;
+        --portfolio-icon-visual-inset: clamp(1.6rem, 5.5vw, 2.1rem) !important;
     }
     
     /* Portfolio başlık kısmı - boşlukları azalt */
@@ -5853,19 +5878,19 @@ progress {
     }
     
     #portfolio .section-intro h5 {
-        font-size: 1.4rem !important;
+        font-size: clamp(1.2rem, 3.5vw, 1.4rem) !important;
         margin-bottom: 0.5rem !important;
         letter-spacing: 0.2rem !important;
     }
     
     #portfolio .section-intro h1 {
-        font-size: 2.8rem !important;
+        font-size: clamp(2.2rem, 7vw, 2.8rem) !important;
         margin-bottom: 1rem !important;
         line-height: 1.2 !important;
     }
     
     #portfolio .section-intro .lead {
-        font-size: 1.5rem !important;
+        font-size: clamp(1.3rem, 4vw, 1.5rem) !important;
         line-height: 1.4 !important;
         margin-bottom: 0 !important;
     }
@@ -5879,7 +5904,7 @@ progress {
     .portfolio-content {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2rem !important;
+        gap: clamp(1.2rem, 4vw, 2rem) !important;
         margin: 0 !important;
         padding: 0 !important;
     }
@@ -5887,12 +5912,18 @@ progress {
     #portfolio .folio-item {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 0 1.5rem 0 !important;
+        margin: 0 0 clamp(1rem, 3vw, 1.5rem) 0 !important;
         padding: 0 !important;
-        border-radius: 15px !important;
+        border-radius: clamp(10px, 3vw, 15px) !important;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         position: relative !important;
-        overflow: hidden !important;
+        overflow: visible !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    #portfolio .folio-item:active {
+        transform: scale(0.98) !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12) !important;
     }
     
     #portfolio .item-wrap {
@@ -5902,36 +5933,40 @@ progress {
     }
     
     .folio-title {
-        padding: 1.5rem !important;
+        padding: clamp(1rem, 4vw, 1.5rem) calc(var(--portfolio-icon-visual-inset) - 10px) 0.2rem clamp(1rem, 4vw, 1.5rem) !important;
         margin: 0 !important;
         text-align: left !important;
         position: relative !important;
     }
     
     h4.folio-title {
-        font-size: 1.8rem !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        font-size: clamp(1.6rem, 4.8vw, 1.9rem) !important;
         line-height: 1.3 !important;
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0 !important;
         text-align: left !important;
-        padding-right: 5.5rem !important;
+        padding-right: 0 !important;
+        width: 100% !important;
     }
     
-    /* Single logo projects - special styling */
+    /* Single logo projects - special styling - REMOVE extra padding */
     h4.folio-title.single-logo {
-        padding-right: 2.8rem !important;
+        padding-right: 0 !important;
     }
     
-    /* Single icon links (direct a tags in h4, not in project-links container) */
+    /* Single icon links (direct a tags in h4) - FLEXBOX positioning */
     h4.folio-title > a {
-        position: absolute !important;
-        top: 0.6rem !important;
-        right: 0.6rem !important;
-        width: 2.8rem !important;
-        height: 2.8rem !important;
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: var(--portfolio-icon-hit) !important;
+        height: var(--portfolio-icon-hit) !important;
         border-radius: 50% !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -5939,35 +5974,56 @@ progress {
         z-index: 40 !important;
         touch-action: manipulation !important;
         -webkit-tap-highlight-color: transparent !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        flex-shrink: 0 !important;
+        margin-left: 0.8rem !important; /* Gap between text and icon */
+    }
+    
+    /* Icon inside direct <a> in h4 - uniform sizing */
+    h4.folio-title > a > i {
+        font-size: var(--portfolio-icon-size) !important;
+        width: var(--portfolio-icon-size) !important;
+        height: var(--portfolio-icon-size) !important;
+        line-height: 1 !important;
+        display: block !important;
+        text-align: center !important;
+        color: var(--color-1) !important;
     }
     
     h4.folio-title > a:active {
-        transform: scale(0.95) !important;
-        background: rgba(255, 165, 0, 0.9) !important;
+        transform: scale(0.9) !important;
+        background: transparent !important;
+    }
+
+    h4.folio-title > a:active i {
+        color: var(--color-2) !important;
     }
     
-    /* Project links fixed to card's top-right corner, horizontal row */
+    /* Project links container - FLEXBOX positioning */
     .folio-title .project-links {
-        position: absolute !important;
-        top: 0.6rem !important;
-        right: 0.6rem !important;
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        gap: 0.4rem !important;
+        gap: var(--portfolio-icon-gap) !important;
         margin: 0 !important;
         z-index: 30 !important;
         flex-wrap: nowrap !important;
         pointer-events: auto !important;
+        flex-shrink: 0 !important;
+        margin-left: 0.8rem !important; /* Gap between text and icons */
     }
     .folio-title .project-links a {
-        width: 2.8rem !important;
-        height: 2.8rem !important;
-        padding: 0.3rem !important;
+        width: var(--portfolio-icon-hit) !important;
+        height: var(--portfolio-icon-hit) !important;
+        padding: 0 !important;
         border-radius: 50% !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-        border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -5977,23 +6033,68 @@ progress {
         cursor: pointer !important;
         text-decoration: none !important;
         touch-action: manipulation !important;
-        min-width: 44px !important;
-        min-height: 44px !important;
+        min-width: var(--portfolio-icon-hit) !important;
+        min-height: var(--portfolio-icon-hit) !important;
         position: relative !important;
         z-index: 999 !important;
         -webkit-tap-highlight-color: transparent !important;
     }
-    .folio-title .project-links a:active {
-        transform: scale(0.95) !important;
-        background: rgba(255, 165, 0, 0.9) !important;
+
+    .folio-title .project-links a + a {
+        margin-left: -10px !important;
     }
-    .folio-title .project-links .fa-openai,
+    .folio-title .project-links a:active {
+        transform: scale(0.9) !important;
+        background: transparent !important;
+    }
+    .folio-title .project-links a:active i,
+    .folio-title .project-links a:active .svg-icon,
+    .folio-title .project-links a:active img {
+        color: var(--color-2) !important;
+        fill: var(--color-2) !important;
+    }
+    .folio-title .project-links i,
     .folio-title .project-links .svg-icon,
     .folio-title .project-links img {
-        width: 12px !important;
-        height: 12px !important;
+        width: var(--portfolio-icon-size) !important;
+        height: var(--portfolio-icon-size) !important;
         margin: 0 !important;
         display: block !important;
         object-fit: contain !important;
+        color: var(--color-1) !important;
+        fill: currentColor !important;
+    }
+
+    .folio-title .project-links i {
+        font-size: var(--portfolio-icon-size) !important;
+        line-height: 1 !important;
+        text-align: center !important;
+    }
+
+    .folio-title .project-links .svg-icon {
+        transform: scale(1.08) !important;
+        transform-origin: center !important;
+    }
+
+    #portfolio .folio-types {
+        font-size: clamp(1.1rem, 3.3vw, 1.3rem) !important;
+        line-height: 1.4 !important;
+        margin: 0.1rem 0 0 0 !important;
+        padding: 0 clamp(1rem, 4vw, 1.5rem) 0.05rem clamp(1rem, 4vw, 1.5rem) !important;
+        display: block !important;
+    }
+    
+    /* Reset negative margins from desktop if any */
+    #portfolio h4.folio-title.single-logo + .folio-types {
+        margin-top: 0.1rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0.05rem !important;
+    }
+
+    #portfolio .project-description {
+        font-size: clamp(1.4rem, 4vw, 1.6rem) !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+        padding: 0.1rem clamp(1rem, 4vw, 1.5rem) clamp(1.4rem, 4.5vw, 1.8rem) clamp(1rem, 4vw, 1.5rem) !important;
     }
 }
