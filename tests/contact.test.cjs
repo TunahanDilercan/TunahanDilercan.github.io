@@ -190,3 +190,39 @@ test('blocked browser storage falls back to the normal thank-you without another
     assert.deepEqual(app.navigations, ['/thank-you/']);
     assert.equal(app.requests.length, 1);
 });
+
+test('invisible CAPTCHA obtains a token on submit and then sends once', async () => {
+    const app = setup(async () => ({ ok: true, json: async () => ({ success: true }) }));
+    delete app.fields['h-captcha-response'];
+    let checks = 0;
+    app.context.window.hcaptcha = { execute: async () => { checks++; return { response: 'new-token' }; } };
+    await app.send();
+    assert.equal(checks, 1);
+    assert.equal(app.requests[0][1].body.get('h-captcha-response'), 'new-token');
+    assert.deepEqual(app.navigations, ['/thank-you/']);
+});
+
+test('closing an invisible challenge preserves the message without sending', async () => {
+    const app = setup(async () => { assert.fail('Should not send'); });
+    app.fields['h-captcha-response'].value = '';
+    app.context.window.hcaptcha = { execute: async () => { throw Error('challenge-closed'); } };
+    await app.send();
+    assert.equal(app.requests.length, 0);
+    assert.equal(app.submit.disabled, false);
+    assert.equal(app.fields.message.value, 'Hello there');
+});
+
+test('repeated clicks while a challenge is open do not open more challenges', async () => {
+    const app = setup(async () => ({ ok: true, json: async () => ({ success: true }) }));
+    app.fields['h-captcha-response'].value = '';
+    let resolve;
+    let checks = 0;
+    app.context.window.hcaptcha = { execute: () => { checks++; return new Promise(r => { resolve = r; }); } };
+    const pending = app.send();
+    await app.send();
+    assert.equal(checks, 1);
+    assert.equal(app.requests.length, 0);
+    resolve({ response: 'new-token' });
+    await pending;
+    assert.equal(app.requests.length, 1);
+});

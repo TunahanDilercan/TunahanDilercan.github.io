@@ -6115,8 +6115,15 @@ progress {
 }
 
 .contact-captcha {
-    margin: 0 0 1.6rem;
-    min-height: 78px;
+    margin: 0 0 1.2rem;
     max-width: 100%;
 }
 .contact-captcha .h-captcha { line-height: 0; }
+.captcha-notice {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    overflow-wrap: anywhere;
+}
+.captcha-notice a { color: inherit; text-decoration: underline; }

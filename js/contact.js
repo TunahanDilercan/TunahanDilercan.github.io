@@ -46,21 +46,38 @@
         }
 
         const captcha = form.elements.namedItem('h-captcha-response');
-        if (!captcha || !captcha.value.trim()) {
-            showStatus('Please complete the security check before sending. If it does not load, use "Send via Email App".');
-            return;
-        }
-
         pending = true;
         submit.disabled = true;
-        submit.textContent = 'Sending...';
+        submit.textContent = 'Verifying...';
         form.setAttribute('aria-busy', 'true');
-        showStatus('Sending your message...');
+        showStatus('Running the security check...');
 
         const controller = new AbortController();
-        const timeout = setTimeout(function () { controller.abort(); }, 20000);
+        let timeout;
         try {
+            let captchaToken = captcha ? captcha.value.trim() : '';
+            if (!captchaToken) {
+                if (!window.hcaptcha || typeof window.hcaptcha.execute !== 'function') {
+                    showStatus('The security check is still loading. Please try again or use "Send via Email App".');
+                    return;
+                }
+                try {
+                    const verification = await window.hcaptcha.execute(undefined, { async: true });
+                    captchaToken = verification && verification.response;
+                } catch (_) {
+                    showStatus('The security check was not completed. Please try again or use "Send via Email App".');
+                    return;
+                }
+            }
+            if (typeof captchaToken !== 'string' || !captchaToken.trim()) {
+                showStatus('Please complete the security check before sending.');
+                return;
+            }
+            submit.textContent = 'Sending...';
+            showStatus('Sending your message...');
+            timeout = setTimeout(function () { controller.abort(); }, 20000);
             const data = new FormData(form);
+            data.set('h-captcha-response', captchaToken);
             data.set('replyto', email.value);
             data.set('source_url', window.location.origin + window.location.pathname);
             // Redirect only after we have checked the JSON response ourselves.
@@ -95,7 +112,7 @@
         } finally {
             clearTimeout(timeout);
             // Tokens are single-use. Keep the user's text, but require a fresh challenge.
-            captcha.value = '';
+            if (captcha) captcha.value = '';
             try {
                 if (window.hcaptcha && typeof window.hcaptcha.reset === 'function') window.hcaptcha.reset();
             } catch (_) { /* CAPTCHA reset must not hide the delivery result. */ }

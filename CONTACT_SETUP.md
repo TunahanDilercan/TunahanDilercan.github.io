@@ -24,6 +24,14 @@ A checkbox on the website or a client-side check alone cannot stop direct
 API requests. The missing-token and successful-delivery checks against the
 live provider still need to be completed when publishing the updated site.
 
+## CAPTCHA presentation
+
+The widget uses invisible mode. Verification starts after a valid form is
+submitted; only a small hCaptcha disclosure appears in the layout. A visual
+challenge can still be shown when hCaptcha requires one. Invisible mode does
+not guarantee fewer image questions. Server-side hCaptcha enforcement stays
+enabled.
+
 ## Validation
 
 Run `node --test tests/*.test.cjs`.
