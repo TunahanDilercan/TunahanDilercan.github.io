@@ -10,9 +10,6 @@
     html.className = html.className.replace(/\bno-js\b/g, '') + ' js ';
 
 
-   /* Pr    }; // end ssTypewriter
-
-
    /* Portfolio Show More
     * -------------------------------------------------- */
     const ssPortfolioShowMore = function() {
@@ -54,7 +51,7 @@
         const preloader = document.querySelector('#preloader');
         if (!preloader) return;
 
-        window.addEventListener('load', function() {
+        const reveal = function() {
             
             document.querySelector('body').classList.remove('ss-preload');
             document.querySelector('body').classList.add('ss-loaded');
@@ -65,7 +62,12 @@
                 }
             });
 
-        });
+            // Do not depend on a transition event (e.g. reduced-motion settings).
+            setTimeout(function() { preloader.style.display = 'none'; }, 1800);
+        };
+        if (document.readyState === 'complete') reveal();
+        else window.addEventListener('load', reveal, { once: true });
+        setTimeout(reveal, 5000);
 
         // force page scroll position to top at page refresh
         // window.addEventListener('beforeunload' , function () {
@@ -78,7 +80,7 @@
    /* Parallax
     * -------------------------------------------------- */
     const ssParallax = function() { 
-
+        if (typeof Rellax === 'undefined' || !document.querySelector('.rellax')) return;
         const rellax = new Rellax('.rellax');
 
     }; // end ssParallax
@@ -140,6 +142,19 @@
             event.preventDefault();
             toggleButton.classList.toggle('is-clicked');
             siteBody.classList.toggle('menu-is-open');
+            toggleButton.setAttribute('aria-expanded', String(siteBody.classList.contains('menu-is-open')));
+        });
+
+        toggleButton.addEventListener('keydown', function(event) {
+            if (event.key === ' ') { event.preventDefault(); toggleButton.click(); }
+        });
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && siteBody.classList.contains('menu-is-open')) {
+                siteBody.classList.remove('menu-is-open');
+                toggleButton.classList.remove('is-clicked');
+                toggleButton.setAttribute('aria-expanded', 'false');
+                toggleButton.focus();
+            }
         });
 
         headerNavWrap.querySelectorAll('.s-header__nav a').forEach(function(link) {
@@ -147,8 +162,9 @@
 
                 // at 800px and below
                 if (window.matchMedia('(max-width: 800px)').matches) {
-                    toggleButton.classList.toggle('is-clicked');
-                    siteBody.classList.toggle('menu-is-open');
+                    toggleButton.classList.remove('is-clicked');
+                    siteBody.classList.remove('menu-is-open');
+                    toggleButton.setAttribute('aria-expanded', 'false');
                 }
 
                 // Avoid sticky focus color after click
@@ -164,6 +180,7 @@
             if (window.matchMedia('(min-width: 801px)').matches) {
                 if (siteBody.classList.contains('menu-is-open')) siteBody.classList.remove('menu-is-open');
                 if (toggleButton.classList.contains("is-clicked")) toggleButton.classList.remove("is-clicked");
+                toggleButton.setAttribute('aria-expanded', 'false');
             }
         });
 
@@ -225,7 +242,7 @@
    /* Swiper
     * ------------------------------------------------------ */ 
     const ssSwiper = function() {
-
+        if (typeof Swiper === 'undefined' || !document.querySelector('.swiper-container')) return;
         const mySwiper = new Swiper('.swiper-container', {
 
             slidesPerView: 1,
@@ -253,7 +270,7 @@
    /* Lightbox
     * ------------------------------------------------------ */
     const ssLightbox = function() {
-
+        if (typeof basicLightbox === 'undefined') return;
         const folioLinks = document.querySelectorAll('.folio-item a');
         const modals = [];
 
@@ -266,7 +283,7 @@
             }
             
             // Only create modal for internal selectors (starting with #)
-            if (modalbox && modalbox.startsWith('#')) {
+            if (modalbox && modalbox.length > 1 && modalbox.startsWith('#') && document.getElementById(modalbox.slice(1))) {
                 let instance = basicLightbox.create(
                     document.querySelector(modalbox),
                     {
@@ -296,7 +313,7 @@
             }
             
             // Only attach handler for internal # links that have a corresponding modal
-            if (modalbox && modalbox.startsWith('#')) {
+            if (modalbox && modalbox.length > 1 && modalbox.startsWith('#') && document.getElementById(modalbox.slice(1))) {
                 let currentModalIndex = modalIndex;
                 link.addEventListener("click", function(e) {
                     e.preventDefault();
@@ -342,7 +359,8 @@
         triggers.forEach(function(trigger) {
             trigger.addEventListener("click", function(e) {
                 const target = trigger.getAttribute("href");
-                const targetElement = document.querySelector(target);
+                if (!target || !target.startsWith('#') || target.length < 2) return;
+                const targetElement = document.getElementById(target.slice(1));
                 
                 if (targetElement) {
                     e.preventDefault();
@@ -415,7 +433,7 @@
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight - windowHeight;
             const scrolled = window.scrollY;
-            const progress = (scrolled / documentHeight) * 100;
+            const progress = documentHeight > 0 ? (scrolled / documentHeight) * 100 : 0;
             
             // Update progress width
             progressBar.style.width = Math.min(progress, 100) + '%';
@@ -493,7 +511,7 @@
         ssTypewriter();
         ssPortfolioShowMore();
         ssReadingProgress();
-        ssPullToRefresh();
+        // Use the browser's native pull-to-refresh; custom reloads lose form input.
 
     })();
 
@@ -502,21 +520,11 @@
 /* Legal Menu Toggle Function
  * -------------------------------------------------- */
 function toggleLegalMenu() {
-    console.log('Legal menu toggle clicked!');
     const dropdown = document.getElementById('legalDropdown');
-    
+    const toggle = document.querySelector('.legal-menu__toggle');
     if (dropdown) {
-        const isVisible = dropdown.classList.contains('show');
-        
-        if (isVisible) {
-            dropdown.classList.remove('show');
-            console.log('Menu closed');
-        } else {
-            dropdown.classList.add('show');
-            console.log('Menu opened');
-        }
-    } else {
-        console.error('Dropdown element not found!');
+        const visible = dropdown.classList.toggle('show');
+        if (toggle) toggle.setAttribute('aria-expanded', String(visible));
     }
 }
 
@@ -530,9 +538,20 @@ document.addEventListener('click', function(event) {
         if (!toggle.contains(event.target) && !dropdown.contains(event.target)) {
             if (dropdown.classList.contains('show')) {
                 dropdown.classList.remove('show');
-                console.log('Menu closed by outside click');
+                toggle.setAttribute('aria-expanded', 'false');
             }
         }
+    }
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key !== 'Escape') return;
+    const dropdown = document.getElementById('legalDropdown');
+    const toggle = document.querySelector('.legal-menu__toggle');
+    if (dropdown && toggle && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
     }
 });
 

@@ -4339,7 +4339,7 @@ html {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../images/testimonials-bg-3000.jpg);
+    background-image: url(../images/header-bg-3000.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -6099,3 +6099,19 @@ progress {
         padding: 0.1rem clamp(1rem, 4vw, 1.5rem) clamp(1.4rem, 4.5vw, 1.8rem) clamp(1rem, 4vw, 1.5rem) !important;
     }
 }
+/* Keep submission feedback readable and avoid accidental mobile form zoom. */
+.contact-status {
+    min-height: 1.6em;
+    margin-top: 1.6rem;
+    color: var(--color-text-light);
+    overflow-wrap: anywhere;
+}
+.contact-status:empty { min-height: 0; margin: 0; }
+.contact-form button:disabled { opacity: .65; cursor: wait; }
+.legal-menu__toggle { padding: 0; margin: 0; line-height: normal; }
+.legal-menu__toggle:focus-visible { outline: 2px solid var(--color-1) !important; outline-offset: 3px; }
+@media screen and (max-width: 800px) {
+    .contact-form input, .contact-form textarea { font-size: 16px; }
+}
+
+.contact-captcha { margin-bottom: 2rem; min-height: 144px; }

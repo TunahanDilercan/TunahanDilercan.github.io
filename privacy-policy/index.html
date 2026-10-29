@@ -13,16 +13,9 @@
 
     <!-- Legal Menu (Discrete) -->
     <div class="legal-menu">
-        <div class="legal-menu__toggle" onclick="
-            var dropdown = document.getElementById('legalDropdown');
-            if (dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-            } else {
-                dropdown.classList.add('show');
-            }
-        ">
+        <button type="button" class="legal-menu__toggle" aria-label="Site information" aria-controls="legalDropdown" aria-expanded="false" onclick="toggleLegalMenu()">
             <i class="fas fa-ellipsis-h"></i>
-        </div>
+        </button>
         <div class="legal-menu__dropdown" id="legalDropdown">
             <a href="/">← Home</a>
             <a href="/contact-us/">Contact Us</a>
@@ -40,7 +33,7 @@
                     <div class="legal-content">
                         <div class="legal-header">
                             <h1>Privacy Policy</h1>
-                            <p class="legal-date">Last updated: September 2, 2025</p>
+                            <p class="legal-date">Last updated: October 29, 2026</p>
                         </div>
 
                         <div class="legal-body">
@@ -48,10 +41,10 @@
                             <p>This website collects minimal information only through the contact form.</p>
 
                             <h2>Contact Form Data</h2>
-                            <p>When you contact me, I collect your name, email, and message to respond to your inquiry.</p>
+                            <p>When you contact me, I collect your email address, subject, and message to respond to your inquiry.</p>
 
                             <h2>Third-Party Services</h2>
-                            <p>This website uses FormSubmit.co for form handling.</p>
+                            <p>This website uses Web3Forms for form handling, hCaptcha for spam protection, and Cloudflare Web Analytics for site usage measurement. Google Fonts and icon styles are loaded from external providers; your browser contacts those providers when loading these resources.</p>
 
                             <h2>Data Security</h2>
                             <p>Your information is protected with appropriate security measures.</p>

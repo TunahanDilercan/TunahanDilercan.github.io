@@ -13,16 +13,9 @@
 
     <!-- Legal Menu (Discrete) -->
     <div class="legal-menu">
-        <div class="legal-menu__toggle" onclick="
-            var dropdown = document.getElementById('legalDropdown');
-            if (dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-            } else {
-                dropdown.classList.add('show');
-            }
-        ">
+        <button type="button" class="legal-menu__toggle" aria-label="Site information" aria-controls="legalDropdown" aria-expanded="false" onclick="toggleLegalMenu()">
             <i class="fas fa-ellipsis-h"></i>
-        </div>
+        </button>
         <div class="legal-menu__dropdown" id="legalDropdown">
             <a href="/">← Home</a>
             <a href="/contact-us/">Contact Us</a>

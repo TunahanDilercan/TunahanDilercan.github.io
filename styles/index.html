@@ -11,6 +11,7 @@
                 </ul> basic page needs
     ================================================== -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, follow">
     <title>Styles - Tunahan Dilercan</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -77,7 +78,7 @@
             </nav>
         </div> <!-- end row -->
         
-        <a class="s-header__menu-toggle" href="#0" title="Menu">
+        <a class="s-header__menu-toggle" href="#0" title="Menu" role="button" aria-label="Navigation menu" aria-expanded="false">
             <span class="s-header__menu-icon"></span>
         </a>
     </header> <!-- end s-header -->
@@ -148,7 +149,7 @@
 
                 <h3>Paragraph and Image</h3>
 
-                <p><a href="#"><img width="120" height="120" class="h-pull-left" alt="sample-image" src="images/sample-image.jpg"></a>
+                <p><a href="#"><img width="120" height="120" class="h-pull-left" alt="sample-image" src="/images/avatars/tunahan-img.jpg"></a>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.Cras id urna. Morbi 
                 tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo. Donec mattis, 
                 purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. 
@@ -407,9 +408,7 @@
                 <h3 class="h-add-bottom">Responsive Image</h3>
 
                 <figure>
-                    <img src="images/wheel-500.jpg" 
-                    srcset="images/wheel-1000.jpg 1000w, 
-                    images/wheel-500.jpg 500w" 
+                    <img src="/images/header-bg-3000.jpg"
                     sizes="(max-width: 1000px) 100vw, 1000px" alt="">
 
                     <figcaption>
@@ -794,8 +793,8 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 
