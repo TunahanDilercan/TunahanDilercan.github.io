@@ -6114,4 +6114,9 @@ progress {
     .contact-form input, .contact-form textarea { font-size: 16px; }
 }
 
-.contact-captcha { margin-bottom: 2rem; min-height: 144px; }
+.contact-captcha {
+    margin: 0 0 1.6rem;
+    min-height: 78px;
+    max-width: 100%;
+}
+.contact-captcha .h-captcha { line-height: 0; }
